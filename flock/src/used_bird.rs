@@ -119,7 +119,7 @@ impl Birds {
             return;
         }
         
-        if settings.pause {
+        if settings.start {
             return;
         }
 

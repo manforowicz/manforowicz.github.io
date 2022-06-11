@@ -1,9 +1,10 @@
+use macroquad::ui::Skin;
 use macroquad::prelude::*;
 use macroquad::ui::{hash, root_ui, widgets};
 use std::ops::Range;
 
 pub struct Settings {
-    pub pause: bool,
+    pub start: bool,
     pub population: f32,
     //pub sensing_radius: f32,
     pub spacing_goal: f32,
@@ -18,7 +19,7 @@ pub struct Settings {
 impl Default for Settings {
     fn default() -> Self {
         Self {
-            pause: true,
+            start: true,
             population: 50.,
             //sensing_radius: 300.,
             spacing_goal: screen_width() / 20.,
@@ -52,7 +53,7 @@ macro_rules! slider {
 impl Settings {
     pub fn draw_ui(&mut self) {
         widgets::Popup::new(hash!(), vec2(300., 180.)).ui(&mut root_ui(), |ui| {
-            ui.checkbox(hash!(), "Pause", &mut self.pause);
+            ui.checkbox(hash!(), "START!", &mut self.start);
             
             slider!(ui, self.population, 0., 100.);
             //slider!(ui, self.sensing_radius, 50., 500.);
