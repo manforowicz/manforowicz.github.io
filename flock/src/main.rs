@@ -8,8 +8,8 @@ use crate::obstacle::Obstacles;
 mod settings;
 use crate::settings::Settings;
 
-mod bird_2;
-use crate::bird_2::Birds;
+mod used_bird;
+use crate::used_bird::Birds;
 
 #[macroquad::main("flocking_sim")]
 async fn main() {
@@ -25,7 +25,7 @@ async fn main() {
         obstacles.draw();
         
 
-        birds.update(&settings);
+        birds.update(&obstacles, &settings);
         birds.draw();
 
         settings.draw_ui();

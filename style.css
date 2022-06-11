@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+h1 {
+    margin: 28;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+h4 {
+    margin: 28;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+#glcanvas {
+    margin: auto;
+    display: block;
+    width: 80%;
+}
+
+#MainText {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    padding: 40;
+    margin: auto;
+    margin-top: 50;
+    margin-bottom: 50;
+    width: 50%;
+    font-size: 24;
+    color: rgb(255, 255, 255);
+    background-color: rgb(39, 39, 39);
+}
+
+#LowerText {
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+    text-align: center;
+    margin: 50;
+    font-size: 24;
+    color: rgb(255, 255, 255);
+}
+
+a:link {
+    color: rgb(164, 193, 255);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: rgb(175, 175, 175);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(121, 121, 121);
+    background-color: transparent;
+    text-decoration: underline;
+}

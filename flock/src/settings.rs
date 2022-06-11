@@ -21,7 +21,7 @@ impl Default for Settings {
             pause: true,
             population: 50.,
             //sensing_radius: 300.,
-            spacing_goal: 50.,
+            spacing_goal: screen_width() / 20.,
             separation_strength: 5.,
             cohesion_strength: 5.,
             alignment_strength: 5.,

@@ -1,4 +1,4 @@
-//use crate::obstacle::Obstacles;
+use crate::obstacle::Obstacles;
 use crate::settings::Settings;
 use kiddo::KdTree;
 use macroquad::prelude::*;
@@ -13,7 +13,7 @@ pub struct Bird {
 }
 
 impl Bird {
-    fn update(&mut self, tree: &KdTree<f32, Bird, 2>, settings: &Settings) {
+    fn update(&mut self, tree: &KdTree<f32, Bird, 2>, obstacles: &Obstacles, settings: &Settings) {
         let neighbors = tree.nearest(&arr(&self.pos), 6, &squared_dist).unwrap();
         let mut accel = Vec2::ZERO;
         for other in &neighbors {
@@ -25,14 +25,29 @@ impl Bird {
                 * if dist > 0. {
                     settings.cohesion_strength * 0.0001
                 } else {
-                    settings.separation_strength * 0.01
+                    settings.separation_strength * 0.001
                 };
 
-            accel += vec_between(&other.vel, &self.vel) * settings.alignment_strength * 0.002;
+            accel += vec_between(&other.vel, &self.vel) * settings.alignment_strength * 0.0005;
         }
         if !neighbors.is_empty() {
             self.vel += accel / neighbors.len() as f32;
         }
+
+        let mut accel = Vec2::ZERO;
+        for other in &obstacles.obstacles {
+            let multiplier = if other.color == YELLOW {
+                -0.0001
+            } else {
+                0.0001
+            };
+            accel += vec_between(&self.pos, &other.pos) * multiplier;
+        }
+
+        if !obstacles.obstacles.is_empty() {
+            self.vel += accel / obstacles.obstacles.len() as f32;
+        }
+
         self.vel *=
             1. + (settings.target_speed - self.vel.length()) * settings.speed_strength * 0.0002;
         self.pos += self.vel;
@@ -98,7 +113,7 @@ impl Birds {
         new
     }
 
-    pub fn update(&mut self, settings: &Settings) {
+    pub fn update(&mut self, obstacles: &Obstacles, settings: &Settings) {
         if self.birds.len() != settings.population as usize {
             *self = Self::new(settings.population as usize);
             return;
@@ -114,7 +129,7 @@ impl Birds {
             self.tree.add(&arr(&bird.pos), *bird).unwrap();
         }
         for bird in &mut self.birds {
-            bird.update(&self.tree, settings);
+            bird.update(&self.tree, obstacles, settings);
         }
     }
     pub fn draw(&self) {
