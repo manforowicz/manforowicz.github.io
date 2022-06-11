@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Marcin's Flocking Algorithm</title>
+    <style>
+                body {
+            margin: auto;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(0, 0, 0);
+            line-height: 1.5;
+
+        }
+        
+        h1 {
+            margin: 28;
+            text-align: center;
+            color: white;
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+        }
+
+        h4 {
+            margin: 28;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+        }
+        
+        #glcanvas {
+            margin: auto;
+            display: block;
+            width: 90%;
+        }
+
+        .MainText {
+            display: block;
+            padding: 40;
+            margin: auto;
+            margin-top: 50;
+            margin-bottom: 50;
+            width: 50%;
+            font-size: 24;
+            background-color: rgb(224, 224, 224);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Marcin's Boid Flocking Algorithm</h1>
+    
+    <canvas id="glcanvas" tabindex='1'></canvas>
+    <div class="MainText">
+        <h4>Flocking</h4>
+        <p>Ever look up at the sky, and see an amazing flock of birds? How do they manage to navigate harmoniously without collisions?</p>
+    </div>
+    <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
+    <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
+    <script>load("target/wasm32-unknown-unknown/release/flocking_sim.wasm");</script> <!-- Your compiled wasm file -->
+</body>
+
+</html>
