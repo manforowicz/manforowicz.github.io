@@ -46,13 +46,16 @@
             text-align: center;
             margin: 50;
             font-size: 24;
-            color: rgb(255, 255, 255);
+            color: rgb(83, 55, 55);
         }
+
     </style>
 </head>
 
 <body>
     <h1>Marcin's Boid Flocking Algorithm</h1>
+
+    <div id="nav-placeholder"></div>
 
     <canvas id="glcanvas" tabindex='1'></canvas>
     <div id="MainText">
@@ -75,6 +78,13 @@
     <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
     <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
     <script>load("flocking_sim.wasm");</script> <!-- Your compiled wasm file -->
+    
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/nav.html");
+        });
+    </script>
 </body>
 
 </html>
