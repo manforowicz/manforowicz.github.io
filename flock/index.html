@@ -4,14 +4,10 @@
     <meta charset="utf-8">
     <title>Marcin's Flocking Algorithm</title>
     <style>
-                body {
-            margin: auto;
-            font-family: Arial, Helvetica, sans-serif;
+        body {
             background-color: rgb(0, 0, 0);
-            line-height: 1.5;
-
         }
-        
+
         h1 {
             margin: 28;
             text-align: center;
@@ -24,14 +20,16 @@
             text-align: center;
             font-family: 'Courier New', Courier, monospace, sans-serif;
         }
-        
+
         #glcanvas {
             margin: auto;
             display: block;
             width: 90%;
         }
 
-        .MainText {
+        #MainText {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
             display: block;
             padding: 40;
             margin: auto;
@@ -41,16 +39,38 @@
             font-size: 24;
             background-color: rgb(224, 224, 224);
         }
+
+        #LowerText {
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+            display: block;
+            text-align: center;
+            margin: 50;
+            font-size: 24;
+            color: rgb(255, 255, 255);
+        }
     </style>
 </head>
 
 <body>
     <h1>Marcin's Boid Flocking Algorithm</h1>
-    
+
     <canvas id="glcanvas" tabindex='1'></canvas>
-    <div class="MainText">
+    <div id="MainText">
         <h4>Flocking</h4>
-        <p>Ever look up at the sky, and see an amazing flock of birds? How do they manage to navigate harmoniously without collisions?</p>
+        <p>Ever look up at the sky, and see an amazing flock of birds? How do they manage to navigate harmoniously
+            without collisions?</p>
+        <p>I wrote this project in Rust using the Macroquad game engine, and compiled it to web assembly (wasm).
+            <a href="https://github.com/manforowicz/manforowicz.github.io/tree/main/flock">View this website's code on
+                Github.</a>
+        </p>
+
+    </div>
+
+    <div id="LowerText">
+        <p>By Marcin Anforowicz</p>
+        <p>Tesla STEM High School</p>
+        <p>APCSA Period 4</p>
+        <p>Mr. Thompson, Mr. Kilian</p>
     </div>
     <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
     <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
