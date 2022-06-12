@@ -19,17 +19,40 @@
 
     <canvas id="glcanvas" tabindex='1'></canvas>
     <div id="MainText">
-        <h4>Flocking</h4>
-        <p>Ever look up at the sky, and see an amazing flock of birds? How do they manage to navigate harmoniously
-            without collisions?</p>
-        <p>To better understand their behavior, I created a boids simulation. Boids are an artificial life algorithm
-            created by Craig Reynolds in 1986. </p>
-
-
-        <p>I wrote this project in Rust using the Macroquad game engine, and compiled it to web assembly (wasm).
-            <a href="https://github.com/manforowicz/manforowicz.github.io/tree/main/flock">View this website's code on
-                Github.</a>
+        <h4>Emergent Behavior</h4>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Boids" target="_blank">Boids</a>
+            are an artificial life form invented by Craig Reynolds in 1986. Each boid follows a set of simple rules, and
+            yet surprising behaviors may occur. This is an example of
+            <a href="https://en.wikipedia.org/wiki/Swarm_intelligence" target="_blank">swarm intellegence</a>
+            , an expression coined by Gerardo Beni and Jing Wang in 1989.
         </p>
+
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Emergence" target="_blank">Emergent behavior</a>
+            is the ability of simple rules to create unpredictable and complex systems. At first glance, life seems to
+            create order out of disorder, something that an observer would never predict. We, humans, are built of
+            particles that follow simple
+
+            <a href="https://en.wikipedia.org/wiki/Quantum_mechanics" target="_blank">quantum equations</a>
+            , and yet we have complex personalities, interactions, and emotions. We even create
+
+            <a href="">computer simulations</a>
+            to
+            mimic the processes that make our existence possible.
+        </p>
+
+        <h4>Rules</h4>
+        <p>Each boid follows only these rules:</p>
+        <ol>
+            <li>Each boid senses only its 6 nearest neighbors.</li>
+            <li>When a boid gets closer or further from its neighbors, it applies a corresponding force to return to the
+                preset distance.</li>
+            <li>Each boid applies a force to minimize velocity difference in relation to its neighbors.</li>
+            <li>Each boid applies a force to accelerate or accelerate to the preset speed.</li>
+            <li>Each boid applies a force toward attractor objects, and away from repeller objects.</li>
+        </ol>
+
 
         <h4>Sliders</h4>
         <p>Mess around with the following sliders to discover new behaviors.</p>
@@ -40,7 +63,7 @@
             </tr>
             <tr>
                 <td>Population</td>
-                <td>Set how many boids are simulated.</td>
+                <td>How many boids are simulated.</td>
             </tr>
             <tr>
                 <td>Spacing goal</td>
@@ -56,7 +79,7 @@
             </tr>
             <tr>
                 <td>Alignment Strength</td>
-                <td>What absolute speed the boid attempts to maintain.</td>
+                <td>How strongly the boids try to match velocity with their neighbors.</td>
             </tr>
             <tr>
                 <td>Target Speed</td>
@@ -67,6 +90,25 @@
                 <td>The strength at which the boid accelerates or deccelerates to maintain target speed.</td>
             </tr>
         </table>
+
+        <h4>Code</h4>
+        <p>Having every boid measure distance with all neighbors to find its closest boids would require a quadratic
+            time complexity O(n^2). Thankfully, a data structure called the
+            <a href="https://en.wikipedia.org/wiki/K-d_tree" target="_blank">KD-tree</a>
+            sorts boids in a way that lowers time complexity to O(nlogn). KD-trees are like
+            <a href="https://en.wikipedia.org/wiki/Binary_tree" target="_blank">binary trees</a>
+
+            , but they alternate between comparing X and Y coordinates depending on the row depth. I used an unbalanced,
+            pre-implemented KD-tree from the Rust “kiddo” crate.
+        </p>
+
+        <p>I wrote the actual simulation and rendering in the fabulous Rust “macroquad” crate. I compiled everything to
+            web assembly (WASM) so it can be efficiently run online.
+            <a href="https://doc.rust-lang.org/book/foreword.html" target="_blank">Rust</a>
+            is a very well-designed language that I predict will soon take over huge chunks of the software industry.
+            <a href="https://github.com/manforowicz/manforowicz.github.io/tree/main/flock" target="_blank">View this
+                webpage’s source code on github.</a>
+        </p>
     </div>
 
     <div id="LowerText">
