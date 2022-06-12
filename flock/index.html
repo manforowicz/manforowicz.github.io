@@ -113,6 +113,17 @@
             <a href="https://github.com/manforowicz/manforowicz.github.io/tree/main/flock" target="_blank">View this
                 webpage’s source code on github.</a>
         </p>
+
+        <h4>APCSA Project Write-Up</h4>
+        <p>At the beginning of this project, I wasn't quite sure what I wanted to make. Then I remembered seeing a simulation of birds flocking and decided to make my own. I chose to write in Rust because it's a very fast and practical language which has a lot of potential. </p>
+        <p>I was torn between using the two main Rust game engines, Bevy and Macroquad. Bevy uses an ECS (entity component system), meaning I give it every entity I create, and it manages them for me. I settled on Macroquad for its simplicity that stems from its lack of an ECS. </p>
+        <p>At the beginning, I easily implemented a system where the boids wrap to the other side of the screen when they go over. However, making forces wrap around the screen was tricky. I had to create a method which uses an if statement to wrap the force in the direction that minimizes distance. </p>
+        <p>Also, I ran into an interesting problem with the Rust borrow checker. I had a nested loop where each boid in a mutable vector compares itself to all other boids in the vector, and mutably updates itself. This threw a compile error, because having more than one reference when mutating an object is illegal. The borrow-checker did this to prevent possible data races and other hard-to-debug memory issues. </p>
+        <p>After I got everything working, I realized I can improve on the nested O(n^2) time. The performance was high, but I wanted to do better. I created a system where each boid can only sense boids within a radius of itself. Then I divided the canvas into square tiles as wide as the sensing radius. The tiles were stored in a HashMap, indexed by tuples of their x and y coordinates. Each boid only had to check for neighbors in the 9 tiles closest to itself. When too many neighbors were detected, a random subset of them was retrieved to improve performance. </p>
+        <p>Instead of retrieving a random subset, I wanted to try always retrieving the 6 closest boids, regardless of radius. (6 because boids tend to cluster in hexagonal patterns) To accomplish this, I used a pre-implemented unbalanced KD-tree from the Rust Kiddo crate. For an unknown reason, the performance increase over the naïve approach was high, but not as high as I expected. Maybe that had to do with the KD-tree not being balanced. I tried implementing my own KD-tree but put that sub-project on hold to work on other parts. </p>
+        <p>Then I learned how to compile Rust to web assembly (.wasm), and load it into an html canvas element using an imported JavaScript file. Everything was surprisingly seamless, and the performance was incredible. I then created a page on github.io and pushed my code into the repository using git. To make the website look better, I coded a side navigation bar, CSS styling, and a text explanation. Finally, I tuned the setting sliders to make the default behavior satisfying to watch. </p>
+        <p>This project taught me best-practices regarding using git and Github version control. I learned the intricacies of the Rust language, and its memory management model. I discovered a lot about flock behavior and emergence. I also used CSS, WASM, and HTML for the first time in my life. </p>
+        <p>This project was made in VSCode on MX Linux. </p>
     </div>
 
     <div id="LowerText">
