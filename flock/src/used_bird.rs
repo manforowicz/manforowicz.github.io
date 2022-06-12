@@ -123,7 +123,6 @@ impl Birds {
             return;
         }
 
-
         self.tree = KdTree::new();
         for bird in &self.birds {
             self.tree.add(&arr(&bird.pos), *bird).unwrap();
