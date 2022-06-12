@@ -55,6 +55,13 @@ table th {
     background-color: #3f1f49;
 }
 
+img {
+    width: 50%;
+    display: block;
+    margin: auto;
+    align-self: center;
+}
+
 #MainText {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.8;

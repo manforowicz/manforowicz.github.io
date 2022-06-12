@@ -42,6 +42,8 @@
             mimic the processes that make our existence possible.
         </p>
 
+        <p>Someday I plan on adding new features such as natural selection, predators, and complex environments.</p>
+
         <h4>Rules</h4>
         <p>Each boid follows only these rules:</p>
         <ol>
@@ -100,6 +102,7 @@
 
             , but they alternate between comparing X and Y coordinates depending on the row depth. I used an unbalanced,
             pre-implemented KD-tree from the Rust “kiddo” crate.
+            <img src="kd-tree.png" alt="KD-TREE">
         </p>
 
         <p>I wrote the actual simulation and rendering in the fabulous Rust “macroquad” crate. I compiled everything to
