@@ -23,12 +23,12 @@ impl Bird {
             accel += vec_between(&other.pos, &self.pos).normalize_or_zero()
                 * dist
                 * if dist > 0. {
-                    settings.cohesion_strength * 0.0001
+                    settings.cohesion_strength * 0.0002
                 } else {
-                    settings.separation_strength * 0.001
+                    settings.separation_strength * 0.002
                 };
 
-            accel += vec_between(&other.vel, &self.vel) * settings.alignment_strength * 0.0005;
+            accel += vec_between(&other.vel, &self.vel) * settings.alignment_strength * 0.005;
         }
         if !neighbors.is_empty() {
             self.vel += accel / neighbors.len() as f32;
@@ -36,12 +36,15 @@ impl Bird {
 
         let mut accel = Vec2::ZERO;
         for other in &obstacles.obstacles {
+            
+            let dist = vec_between(&self.pos, &other.pos).length().clamp(100., f32::MAX);
             let multiplier = if other.color == YELLOW {
-                -0.0001
+                -4. / dist
             } else {
-                0.0001
+                4. / dist
             };
-            accel += vec_between(&self.pos, &other.pos) * multiplier;
+            
+            accel += vec_between(&self.pos, &other.pos).normalize_or_zero() * multiplier;
         }
 
         if !obstacles.obstacles.is_empty() {
@@ -104,7 +107,7 @@ impl Birds {
                     rand::gen_range(0., screen_width()),
                     rand::gen_range(0., screen_height()),
                 ),
-                vel: Vec2::new(rand::gen_range(-1., 1.), rand::gen_range(-1., 1.)),
+                vel: Vec2::new(rand::gen_range(-5., 5.), rand::gen_range(-5., 5.)),
                 rot: 0.,
                 size: screen_width().min(screen_height()) / 100.0,
                 color: DARKGRAY,
@@ -124,12 +127,14 @@ impl Birds {
         }
 
         self.tree = KdTree::new();
-        for bird in &self.birds {
-            self.tree.add(&arr(&bird.pos), *bird).unwrap();
-        }
-        for bird in &mut self.birds {
-            bird.update(&self.tree, obstacles, settings);
-        }
+
+        self.birds.iter().for_each(|bird| 
+            self.tree.add(&arr(&bird.pos), *bird).unwrap()
+        );
+        self.birds.iter_mut().for_each(|bird| 
+            bird.update(&self.tree, obstacles, settings)
+        );
+
     }
     pub fn draw(&self) {
         for bird in &self.birds {

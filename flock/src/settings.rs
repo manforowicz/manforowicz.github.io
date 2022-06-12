@@ -19,9 +19,9 @@ impl Default for Settings {
     fn default() -> Self {
         Self {
             start: true,
-            population: 50.,
+            population: 100.,
             //sensing_radius: 300.,
-            spacing_goal: screen_width() / 20.,
+            spacing_goal: screen_width() / 30.,
             separation_strength: 5.,
             cohesion_strength: 5.,
             alignment_strength: 5.,
@@ -54,9 +54,9 @@ impl Settings {
         widgets::Popup::new(hash!(), vec2(300., 180.)).ui(&mut root_ui(), |ui| {
             ui.checkbox(hash!(), "START!", &mut self.start);
             
-            slider!(ui, self.population, 0., 100.);
+            slider!(ui, self.population, 0., 200.);
             //slider!(ui, self.sensing_radius, 50., 500.);
-            slider!(ui, self.spacing_goal, 0., 500.);
+            slider!(ui, self.spacing_goal, 0., 200.);
             slider!(ui, self.separation_strength);
             slider!(ui, self.cohesion_strength);
             slider!(ui, self.alignment_strength);
