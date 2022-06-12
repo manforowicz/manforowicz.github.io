@@ -1,3 +1,6 @@
+//CURRENTLY NOT USED
+//This system uses a tiled hashmap to find birds within a preset radius.
+
 use crate::obstacle::Obstacles;
 use crate::settings::Settings;
 use macroquad::prelude::*;

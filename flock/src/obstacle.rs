@@ -1,3 +1,5 @@
+//Manages the formation and deletion of obstacles.
+
 use macroquad::prelude::*;
 use macroquad::ui::root_ui;
 

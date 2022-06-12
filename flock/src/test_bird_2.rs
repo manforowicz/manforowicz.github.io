@@ -1,3 +1,7 @@
+//CURRENTLY NOT USED
+//This system uses a KD-tree from the ACAP crate
+
+
 //use kiddo::ErrorKind;
 //use crate::obstacle::Obstacles;
 use crate::settings::Settings;

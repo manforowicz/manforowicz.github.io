@@ -1,3 +1,5 @@
+//Manages all sliders and settings
+
 use macroquad::prelude::*;
 use macroquad::ui::{hash, root_ui, widgets};
 use std::ops::Range;

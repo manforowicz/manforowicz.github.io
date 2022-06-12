@@ -1,3 +1,5 @@
+//This system uses an unbalanced KD-tree from the kiddo crate.
+
 use crate::obstacle::Obstacles;
 use crate::settings::Settings;
 use kiddo::KdTree;

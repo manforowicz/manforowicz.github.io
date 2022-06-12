@@ -1,3 +1,6 @@
+//CURRENTLY NOT USED
+//My incomplete attempt at making a KD-tree.
+
 pub trait Point {
     fn get(&self, dimension: usize) -> f32;
 }
