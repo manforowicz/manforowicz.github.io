@@ -94,3 +94,9 @@ a:hover {
     color:rgb(206, 206, 206);
     text-decoration: underline;
 }
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    padding: 15;
+}
