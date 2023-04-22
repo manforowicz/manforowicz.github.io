@@ -3,7 +3,7 @@
 name: CI
 
 env:
-  GODOT_VERSION: 3.3.3
+  GODOT_VERSION: 4.0.1
   
 # Controls when the workflow will run
 on:
@@ -22,7 +22,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:3.3.3
+      image: barichello/godot-ci:4.0.1
     steps:
       - name: Checkout
         uses: actions/checkout@v2
