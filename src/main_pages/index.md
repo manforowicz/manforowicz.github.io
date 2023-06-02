@@ -9,7 +9,7 @@ permalink: "index.html"
 
 <div class="center-container" style="height:100px">
 
-<p class="typewrite monospace" period="2000" text='["Imagine.", "Create.", "Refine.", "Repeat."]'></p>
+<p class="typewrite monospace" data-period="2000" data-text='["Imagine.", "Create.", "Refine.", "Repeat."]'></p>
 
 </div>
 

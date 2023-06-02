@@ -93,8 +93,8 @@ TxtType.prototype.blink = function () {
 window.onload = function () {
     var elements = document.getElementsByClassName("typewrite");
     for (var i = 0; i < elements.length; i++) {
-        var list = JSON.parse(elements[i].getAttribute("text"));
-        var period = parseInt(elements[i].getAttribute("period"), 10);
+        var list = JSON.parse(elements[i].getAttribute("data-text"));
+        var period = parseInt(elements[i].getAttribute("data-period"), 10);
         if (list) {
             new TxtType(elements[i], list, period);
         }
