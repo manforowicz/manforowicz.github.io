@@ -7,7 +7,11 @@ permalink: "index.html"
 
 <div class="parallax" style="background-image: url('img/window.jpg')"></div>
 
-<p class="typewrite monospace" id="test" period="2000" text='["Imagine.", "Create.", "Refine.", "Repeat."]'></p>
+<div class="center-container" style="height:100px">
+
+<p class="typewrite monospace" period="2000" text='["Imagine.", "Create.", "Refine.", "Repeat."]'></p>
+
+</div>
 
 <div class="parallax" style="background-image: url('img/orca-view.jpg')"></div>
 

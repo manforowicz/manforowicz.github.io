@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "npx @11ty/eleventy --serve",
     "clear": "rm -rf _site"
   },
   "keywords": [],

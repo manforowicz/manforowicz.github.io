@@ -63,18 +63,32 @@ TxtType.prototype.tick = function () {
     }
 
     if (this.txt.length === fullTxt.length) {
-        delta = this.period;
+        this.blink();
         this.isDeleting = true;
+        delta = this.period;
     } else if (this.txt.length === 0) {
-        delta = 500;
         this.isDeleting = false;
         this.i++;
+        delta = 500;
     }
 
     setTimeout(() => {
         this.tick();
     }, delta);
 };
+
+TxtType.prototype.blink = function () {
+    if (this.txt.length === this.list[this.i].length) {
+        if (this.el.innerHTML.slice(-1) === "▏") {
+            this.el.innerHTML = this.txt;
+        } else {
+            this.el.innerHTML = this.txt + "▏"
+        }
+        setTimeout(() => {
+            this.blink();
+        }, 500);
+    }
+}
 
 window.onload = function () {
     var elements = document.getElementsByClassName("typewrite");
@@ -86,3 +100,8 @@ window.onload = function () {
         }
     }
 };
+
+
+window.addEventListener('scroll', () => {
+    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+  }, false);

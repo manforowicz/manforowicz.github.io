@@ -4,6 +4,7 @@ body {
     margin: 0;
     font-family: "Noto Sans", sans-serif;
     text-align: center;
+    overflow-x: hidden;
 }
 
 p,
@@ -12,7 +13,6 @@ li {
     width: min(800px, 95%);
     text-align: left;
     line-height: 2;
-    margin: 0 0 15px 0;
 }
 
 .monospace {
@@ -26,15 +26,38 @@ h1 {
 
 .parallax {
     /* Full height */
-    height: 50vw; 
-  
+    height: 50vh;
+
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-items: left;
+}
 
 .fullscreen {
     height: 100vw;
+}
+
+.monospace {
+    animation: slide 1s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-fill-mode: both;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(-50vw);
+    }
+
+    to {
+        transform: translateX(100vw);
+    }
 }
