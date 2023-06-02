@@ -3,8 +3,12 @@ title: Foo
 permalink: "index.html"
 ---
 
+<h1>Marcin Anforowicz</h1>
 
-<p id="test">This is the periodic table, noble gas is stable, halogens and alkali react aggressively, each period will see new outer shells, with electrons added moving to the right. There's hydrogen, helium, lithium, beryllium, boron, carbon everywhere, nitrogen all through the air, oxygen so you can breath, flourine for your pretty teeth, neon to light up the signs, sodium for salty times!</p>
+<div class="parallax" style="background-image: url('img/window.jpg')"></div>
+
+<p class="typewrite monospace" id="test" period="2000" text='["Imagine.", "Create.", "Refine.", "Repeat."]'></p>
+
+<div class="parallax" style="background-image: url('img/orca-view.jpg')"></div>
 
 <script src="js/type-write.js"></script>
-<script>typeWriter("test")</script>

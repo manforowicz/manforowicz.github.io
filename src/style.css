@@ -2,27 +2,39 @@ body {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     margin: 0;
-}
-
-main {
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: min(800px, 95%);
     font-family: "Noto Sans", sans-serif;
+    text-align: center;
 }
 
 p,
 li {
+    margin: auto;
+    width: min(800px, 95%);
+    text-align: left;
     line-height: 2;
     margin: 0 0 15px 0;
 }
 
+.monospace {
+    font-family: "Share Tech Mono", monospace;
+}
 
-footer p {
-    padding: 20px;
-    margin: 0;
-    background-color: rgb(39, 39, 39);
-    font-family: cursive;
-    text-align: center;
+h1 {
+    font-weight: bold;
+    font-family: "Share Tech Mono", monospace;
+}
+
+.parallax {
+    /* Full height */
+    height: 50vw; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.fullscreen {
+    height: 100vw;
 }
