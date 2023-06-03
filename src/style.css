@@ -26,7 +26,7 @@ h1 {
 
 .parallax {
     /* Full height */
-    height: 50vh;
+    height: 100vh;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -45,7 +45,7 @@ h1 {
     height: 100vw;
 }
 
-.monospace {
+.scroll-slide {
     animation: slide 1s linear;
     animation-play-state: paused;
     animation-delay: calc(var(--scroll) * -1s);

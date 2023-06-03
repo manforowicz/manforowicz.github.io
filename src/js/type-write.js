@@ -1,6 +1,5 @@
-
-
-/*var MyThing = function (elem, txt) {
+"use strict";
+/*let MyThing = function (elem, txt) {
     this.elem = elem;
     this.txt = txt;
     this.i = 0;
@@ -20,7 +19,7 @@ function typeWriter(id) {
     //_typeWriter(elem, txt, 0);
 
 
-    var hello = new MyThing(elem, txt);
+    let hello = new MyThing(elem, txt);
     hello.write();
 }
 
@@ -34,7 +33,7 @@ function _typeWriter(elem, txt, i) {
 */
 //-----------
 
-var TxtType = function (el, list, period) {
+let TxtType = function (el, list, period) {
     this.list = list;
     this.el = el;
     this.i = 0;
@@ -45,8 +44,8 @@ var TxtType = function (el, list, period) {
 };
 
 TxtType.prototype.tick = function () {
-    this.i %= this.list.length;
-    var fullTxt = this.list[this.i];
+
+    let fullTxt = this.list[this.i];
 
     if (this.isDeleting) {
         this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -56,19 +55,20 @@ TxtType.prototype.tick = function () {
 
     this.el.innerHTML = this.txt + "▏";
 
-    var delta = 100;
+    let delta = 100;
 
     if (this.isDeleting) {
         delta /= 2;
     }
 
-    if (this.txt.length === fullTxt.length) {
+    if (this.txt.length >= fullTxt.length) {
         this.blink();
         this.isDeleting = true;
         delta = this.period;
     } else if (this.txt.length === 0) {
         this.isDeleting = false;
-        this.i++;
+        this.i += 1;
+        this.i %= this.list.length;
         delta = 500;
     }
 
@@ -90,18 +90,18 @@ TxtType.prototype.blink = function () {
     }
 }
 
-window.onload = function () {
-    var elements = document.getElementsByClassName("typewrite");
-    for (var i = 0; i < elements.length; i++) {
-        var list = JSON.parse(elements[i].getAttribute("data-text"));
-        var period = parseInt(elements[i].getAttribute("data-period"), 10);
+
+
+function init() {
+    let elements = document.getElementsByClassName("typewrite");
+    for (let elem of elements) {
+        let list = JSON.parse(elem.getAttribute("data-text"));
+        let period = parseInt(elem.getAttribute("data-period"), 10) || 0;
         if (list) {
-            new TxtType(elements[i], list, period);
+            new TxtType(elem, list, period);
         }
     }
 };
 
 
-window.addEventListener('scroll', () => {
-    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-  }, false);
+document.addEventListener('DOMContentLoaded', init, { once: true });
