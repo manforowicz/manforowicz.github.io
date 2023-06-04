@@ -1,23 +1,23 @@
-"use strict"
+"use strict";
 const tileSize = 20;
-const fadeFactor = 0.05;
+const fadeRate = 40;
+const agentQuantity = 50;
+const message = "Welcome to my website, I'm glad you're here! ";
 
 let Matrix = function (canvas) {
     this.canvas = canvas;
+
+    canvas.width = window.innerWidth * 1;
+    canvas.height = window.innerHeight * 1;
+
     this.ctx = canvas.getContext('2d');
-    this.columns = [];
+    this.ctx.font = (tileSize - 2) + "px monospace";
 
-    this.maxStackHeight = Math.ceil(canvas.height / tileSize);
+    this.maxStackHeight = Math.floor(canvas.height / tileSize) - 1;
 
-    // divide the canvas into columns
-    for (let i = 0; i < canvas.width / tileSize; i++) {
-        let column = {
-            x: i * tileSize,
-            height: this.maxStackHeight,
-        };
+    let columnCount = Math.floor(canvas.width / tileSize);
 
-        this.columns.push(column);
-    }
+    this.columns = Array.from({length: columnCount}, () => Math.floor(Math.random() * this.maxStackHeight));
 
     // start the main loop
     this.draw();
@@ -26,26 +26,29 @@ let Matrix = function (canvas) {
 
 Matrix.prototype.draw = function () {
 
-
     // draw a semi transparent black rectangle on top of the scene to slowly fade older characters
-    this.ctx.fillStyle = "rgba( 0 , 0 , 0 , " + fadeFactor + " )";
+    this.ctx.globalCompositeOperation = 'destination-out';
+    this.ctx.fillStyle = "rgba( 0 , 0 , 0 , " + fadeRate / this.canvas.height + " )";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-    // pick a font slightly smaller than the tile size
-    this.ctx.font = (tileSize - 2) + "px monospace";
-    this.ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 100%, 80%)';
-
+    this.ctx.globalCompositeOperation = 'source-over';
 
     for (let i = 0; i < this.columns.length; i++) {
 
-        if (this.columns[i].height < this.maxStackHeight) {
-            // pick a random ascii character (change the 94 to a higher number to include more characters)
-            var randomCharacter = String.fromCharCode(33 + Math.floor(Math.random() * 94));
-            this.ctx.fillText(randomCharacter, this.columns[i].x, this.columns[i].height * tileSize + tileSize);
+        let color = (0.1 * Date.now() + 5000 * i / this.canvas.width) % 360;
+        this.ctx.fillStyle = 'hsl(' + color + ', 100%, 60%)';
 
-            this.columns[i].height += 1;
-        } else if (Math.random() < 0.1) {
-            this.columns[i].height = 0;
+        let messageI = (this.columns[i] * this.columns.length + i) % message.length
+
+        let chosenChar = message.charAt(messageI);
+        //let chosenChar = String.fromCharCode(33 + Math.floor(Math.random() * 94));
+
+        let x = i * tileSize;
+        let y = ((this.columns[i] + 1) * tileSize);
+        this.ctx.fillText(chosenChar, x, y);
+    
+        this.columns[i] += 1;
+        if (this.columns[i] >= this.maxStackHeight) {
+            this.columns[i] = 0;
         }
     }
 
@@ -53,6 +56,7 @@ Matrix.prototype.draw = function () {
         this.draw();
     }, 50);
 }
+
 
 function init() {
     new Matrix(document.getElementById('matrix-animation'));
