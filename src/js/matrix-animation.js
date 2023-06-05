@@ -1,23 +1,39 @@
 "use strict";
 const tileSize = 20;
 const fadeRate = 40;
-const agentQuantity = 50;
-const message = "Welcome to my website, I'm glad you're here! ";
+const width = 1;
+const text = "Welcome to my website, I'm glad you're here! ";
+
+const globalMousePos = { x: 0, y: 0 };
 
 let Matrix = function (canvas) {
     this.canvas = canvas;
 
-    canvas.width = window.innerWidth * 1;
-    canvas.height = window.innerHeight * 1;
+    canvas.width = window.innerWidth * width;
+
+    // track mouse
+    canvas.addEventListener("mousemove", (event) => {
+        globalMousePos.x = event.clientX;
+        globalMousePos.y = event.clientY;
+    }, { passive: true });
+    this.mouseOver = false;
+    canvas.addEventListener("mouseleave", (event) => {
+        this.mouseOver = false
+    }, { passive: true });
+    canvas.addEventListener("mouseover", (event) => {
+        this.mouseOver = true
+    }, { passive: true });
+
 
     this.ctx = canvas.getContext('2d');
-    this.ctx.font = (tileSize - 2) + "px monospace";
+    this.ctx.font = "bold " + (tileSize - 2) + "px monospace";
 
-    this.maxStackHeight = Math.floor(canvas.height / tileSize) - 1;
-
+    // height and width in tiles
+    this.maxStackHeight = Math.floor(canvas.height / tileSize);
     let columnCount = Math.floor(canvas.width / tileSize);
 
-    this.columns = Array.from({length: columnCount}, () => Math.floor(Math.random() * this.maxStackHeight));
+    // stores the height of the active letter in each column
+    this.columns = Array.from({ length: columnCount }, () => Math.floor(Math.random() * this.maxStackHeight));
 
     // start the main loop
     this.draw();
@@ -28,28 +44,45 @@ Matrix.prototype.draw = function () {
 
     // draw a semi transparent black rectangle on top of the scene to slowly fade older characters
     this.ctx.globalCompositeOperation = 'destination-out';
-    this.ctx.fillStyle = "rgba( 0 , 0 , 0 , " + fadeRate / this.canvas.height + " )";
+    this.ctx.fillStyle = "rgb(0 0 0 / " + fadeRate / this.canvas.height + ")";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.globalCompositeOperation = 'source-over';
 
+
+    // loop through each column
     for (let i = 0; i < this.columns.length; i++) {
 
-        let color = (0.1 * Date.now() + 5000 * i / this.canvas.width) % 360;
-        this.ctx.fillStyle = 'hsl(' + color + ', 100%, 60%)';
+        // lower the height of the current falling letter
+        this.columns[i] += 1;
+        this.columns[i] %= this.maxStackHeight;
 
-        let messageI = (this.columns[i] * this.columns.length + i) % message.length
-
-        let chosenChar = message.charAt(messageI);
-        //let chosenChar = String.fromCharCode(33 + Math.floor(Math.random() * 94));
-
+        // coordinates of the current letter
         let x = i * tileSize;
         let y = ((this.columns[i] + 1) * tileSize);
-        this.ctx.fillText(chosenChar, x, y);
-    
-        this.columns[i] += 1;
-        if (this.columns[i] >= this.maxStackHeight) {
-            this.columns[i] = 0;
+
+        // defaults
+        let opacity = 100;
+        let color = (0.1 * Date.now() + 5000 * i / this.canvas.width) % 360;
+        let message = text;
+
+        // make everything green on mouse hover
+        if (this.mouseOver) {
+            color = 100;
+            message = "matrix ";
+
+            // hide letters that are far away from mouse
+            let mouse = this.getMousePos();
+            let distToMouse = Math.sqrt((mouse.x - x) ** 2 + (mouse.y - y) ** 2);
+            if (distToMouse > 0.15 * this.canvas.width) {
+                opacity = 0;
+            }
         }
+
+        this.ctx.fillStyle = 'hsl(' + color + ' 100% 60% / ' + opacity + '%)';
+
+        let chosenChar = message.charAt((this.columns[i] * this.columns.length + i) % message.length);
+
+        this.ctx.fillText(chosenChar, x, y);
     }
 
     setTimeout(() => {
@@ -57,9 +90,14 @@ Matrix.prototype.draw = function () {
     }, 50);
 }
 
-
-function init() {
-    new Matrix(document.getElementById('matrix-animation'));
+Matrix.prototype.getMousePos = function () {
+    var rect = this.canvas.getBoundingClientRect();
+    return {
+        x: (globalMousePos.x - rect.left) / (rect.right - rect.left) * this.canvas.width,
+        y: (globalMousePos.y - rect.top) / (rect.bottom - rect.top) * this.canvas.height
+    };
 }
 
-document.addEventListener('DOMContentLoaded', init, { once: true });
+document.addEventListener('DOMContentLoaded', () => {
+    new Matrix(document.getElementById('matrix-animation'));
+}, { once: true });

@@ -16,8 +16,11 @@ li {
     line-height: 2;
 }
 
-.monospace {
+.type-animation {
     font-family: "Share Tech Mono", monospace;
+    font-size: 100px;
+    line-height: 1;
+    padding: 70px 0;
 }
 
 h1 {
@@ -36,29 +39,6 @@ h1 {
     background-size: cover;
 }
 
-.center-container {
-    display: flex;
-    align-items: center;
-    justify-items: left;
-}
-
-.fullscreen {
-    height: 100vw;
-}
-
-.scroll-slide {
-    animation: slide 1s linear;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-    animation-fill-mode: both;
-}
-
-@keyframes slide {
-    from {
-        transform: translateX(-50vw);
-    }
-
-    to {
-        transform: translateX(100vw);
-    }
+.scroll-animation {
+    text-align: left;
 }
