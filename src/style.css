@@ -1,12 +1,16 @@
+:root {
+    --font-mono: 'Share Tech Mono', monospace;
+}
+
+
 body {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     margin: 0;
-    font-family: "Noto Sans", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     text-align: center;
     overflow-x: hidden;
 }
-
 
 p,
 li {
@@ -17,15 +21,23 @@ li {
 }
 
 .type-animation {
-    font-family: "Share Tech Mono", monospace;
-    font-size: 100px;
+    font-family: var(--font-mono);
+    font-size: 70px;
     line-height: 1;
-    padding: 70px 0;
+    text-align: left;
+    display: inline-block;
+    width: 300px;
+}
+
+.large-text {
+    font-family: var(--font-mono);
+    font-size: 70px;
 }
 
 h1 {
+    font-family: var(--font-mono);
     font-weight: bold;
-    font-family: "Share Tech Mono", monospace;
+    
 }
 
 .parallax {
@@ -37,8 +49,4 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.scroll-animation {
-    text-align: left;
 }

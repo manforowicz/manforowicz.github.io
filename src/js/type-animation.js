@@ -1,10 +1,10 @@
 "use strict";
+const period = 2000;
 
-let TxtType = function (el, list, period) {
+let TxtType = function (el, list) {
     this.list = list;
     this.el = el;
     this.i = 0;
-    this.period = period;
     this.txt = "";
     this.isDeleting = false;
     this.tick();
@@ -31,7 +31,7 @@ TxtType.prototype.tick = function () {
     if (this.txt.length >= fullTxt.length) {
         this.blink();
         this.isDeleting = true;
-        delta = this.period;
+        delta = period;
     } else if (this.txt.length === 0) {
         this.isDeleting = false;
         this.i += 1;
@@ -61,10 +61,9 @@ TxtType.prototype.blink = function () {
 function init() {
     let elements = document.getElementsByClassName("type-animation");
     for (let elem of elements) {
-        let list = JSON.parse(elem.getAttribute("data-text"));
-        let period = parseInt(elem.getAttribute("data-period"), 10);
+        let list = JSON.parse(elem.getAttribute("data-text")) || ["data-text attribute not found in element"];
         if (list) {
-            new TxtType(elem, list, period);
+            new TxtType(elem, list);
         }
     }
 };

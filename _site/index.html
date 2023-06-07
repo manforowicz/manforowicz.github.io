@@ -9,6 +9,7 @@
             content="blog, javascript, css, html, educational, university of washington, computer science, programming, coding,
                 mathematics, educational videos, eleventy">
         <meta name="author" content="Marcin Anforowicz">
+        <link rel="stylesheet" href="/resources/prism.css"/>
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans|Share+Tech+Mono">
         <title>Foo</title>
@@ -20,11 +21,10 @@
 <div class="parallax" style="background-image: url('img/night.jpg')">
     <canvas id="matrix-animation" height="810px"></canvas>
 </div>
-    <div
-        class="type-animation scroll-animation"
-        data-period="2000"
-        data-text='["Imagine.", "Create.", "Refine.", "Repeat."]'>Imagine.</div>
-
+<div>
+    <pre class="type-animation" data-text='["Imagine.", "Create.", "Refine.", "Repeat."]'>Imagine.</pre>
+</div>
+<div class="large-text scroll-animation-reverse">Welcome to my website!</div>
 <div class="parallax" style="background-image: url('img/orca-view.jpg')"></div>
 <script src="js/type-animation.js"></script>
 <script src="js/scroll-animation.js"></script>

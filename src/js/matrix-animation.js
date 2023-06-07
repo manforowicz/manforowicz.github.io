@@ -2,6 +2,7 @@
 const tileSize = 20;
 const fadeRate = 40;
 const width = 1;
+const font = "Share Tech Mono";
 const text = "Welcome to my website, I'm glad you're here! ";
 
 const globalMousePos = { x: 0, y: 0 };
@@ -26,7 +27,7 @@ let Matrix = function (canvas) {
 
 
     this.ctx = canvas.getContext('2d');
-    this.ctx.font = "bold " + (tileSize - 2) + "px monospace";
+    this.ctx.font = "bold " + (tileSize - 2) + "px '" + font + "', monospace";
 
     // height and width in tiles
     this.maxStackHeight = Math.floor(canvas.height / tileSize);
@@ -91,7 +92,7 @@ Matrix.prototype.draw = function () {
 }
 
 Matrix.prototype.getMousePos = function () {
-    var rect = this.canvas.getBoundingClientRect();
+    let rect = this.canvas.getBoundingClientRect();
     return {
         x: (globalMousePos.x - rect.left) / (rect.right - rect.left) * this.canvas.width,
         y: (globalMousePos.y - rect.top) / (rect.bottom - rect.top) * this.canvas.height
