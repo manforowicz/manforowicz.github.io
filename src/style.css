@@ -8,36 +8,117 @@ body {
     color: rgb(255, 255, 255);
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
-    text-align: center;
     overflow-x: hidden;
 }
 
-p,
-li {
+main {
     margin: auto;
-    width: min(800px, 95%);
-    text-align: left;
-    line-height: 2;
+    width: min(1000px, 95%);
 }
 
-.type-animation {
-    font-family: var(--font-mono);
-    font-size: 70px;
-    line-height: 1;
-    text-align: left;
-    display: inline-block;
-    width: 300px;
+p {
+    text-indent: 60px;
+    line-height: 2;
+    margin: 2em 0 2em 0;
 }
+
+li {
+    margin: 1.5em 0 1.5em 0; 
+}
+
+p.sub {
+    line-height: 1;
+    font-size: 0.8em;
+}
+
+img {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: auto;
+}
+
+canvas {
+    width: 100%;
+}
+
+/* table */
+
+tr:nth-child(odd){background-color: #363636;}
+
+td, th {
+    padding: 8px;
+  }
+
+th {
+    text-align: left;
+    background-color: #7a7a7a;
+  }
+
+/* Links */
+
+/* unvisited link */
+a:link {
+    color: #8ab4f8;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #c58af9;
+}
+
+/* mouse over link */
+a:hover {
+    text-decoration: underline;
+}
+
+/* CSS for nav-bar */
+
+#nav-bar {
+    text-align: center;
+}
+
+#nav-bar ul {
+    list-style-type: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    display: inline-block;
+}
+
+#nav-bar li {
+    float: left;
+    margin: 0;
+    border-radius: 0 0 15px 15px;
+}
+
+#nav-bar a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-family: var(--font-mono);
+    text-align: center;
+    padding: 14px 16px;
+}
+
+#nav-bar li:hover,
+#nav-bar .active {
+    background-color: #333333;
+}
+
+
+
+
 
 .large-text {
     font-family: var(--font-mono);
     font-size: 70px;
 }
 
-h1 {
+h1, h2, h3 {
     font-family: var(--font-mono);
     font-weight: bold;
-    
+    text-align: center;
 }
 
 .parallax {
@@ -49,4 +130,16 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+/* CSS for Javascript */
+
+.type-animation {
+    font-family: var(--font-mono);
+    font-size: 70px;
+    line-height: 1;
+    text-align: left;
+    display: inline-block;
+    width: 300px;
 }

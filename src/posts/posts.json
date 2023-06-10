@@ -1,0 +1,7 @@
+{
+    "permalink": "{{ page.fileSlug }}/index.html",
+    "title": "Untitled Post",
+    "layout": "post.njk",
+    "author": "Marcin Anforowicz",
+    "tags": "posts"
+}
