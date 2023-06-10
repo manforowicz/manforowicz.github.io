@@ -57,4 +57,4 @@ For example, in the 1950s, the US government broadcast nuclear safety campaigns 
 
 - Bueno, Bruce. DICTATOR’S HANDBOOK : Why Bad Behavior Is Almost Always Good Politics. S.L., Public Affairs, 2022.
 
-- Grey, CGP. “The Rules for Rulers.” YouTube, 24 Oct. 2016, <www.youtube.com/watch?v=rStL7niR7gs>.
+- Grey, CGP. “The Rules for Rulers.” YouTube, 24 Oct. 2016, [www.youtube.com/watch?v=rStL7niR7gs](https://www.youtube.com/watch?v=rStL7niR7gs).

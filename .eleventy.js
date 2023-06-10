@@ -52,7 +52,7 @@ async function cssImageShortcode(src) {
     let imageSrc = path.dirname(this.page.inputPath) + "/" + src;
 
     let metadata = await Image(imageSrc, {
-        widths: ["auto"],
+        widths: [1920],
         formats: ["jpeg"],
         outputDir: "_site/img",
     });
