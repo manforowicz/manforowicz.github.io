@@ -1,0 +1,17 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - post
+layout: base.html
+eleventyComputed:
+  title: Tagged "{{ tag }}"
+permalink: /tags/{{ tag | slugify }}/
+---
+
+{% assign postlist = collections[ tag ] %}
+{% include "postlist.html" %}
+
+<p>See <a href="/tags/">all tags</a>.</p>
