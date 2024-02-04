@@ -1,0 +1,182 @@
+/* CSS SHOULD BE UNDER 200 LINES AT ALL COSTS.
+OTHERWISE YOU'RE DOING SOMETHING REALLY WRONG.
+*/
+
+@font-face {
+    font-family: 'FiraSans';
+    src: url("/assets/FiraSans-Light.ttf");
+}
+
+/* General */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: FiraSans, sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    word-break: break-word;
+}
+
+main {
+    flex: 1;
+    width: min(95%, 800px);
+}
+
+p {
+    line-height: 1.8;
+}
+
+
+/* Headings */
+
+h1,
+h2 {
+    text-align: center;
+
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+h2 {
+    line-height: 2em;
+    border-bottom: 1px solid #9b9b9b;
+}
+
+h2,
+h3,
+h4 {
+    margin-top: 50px;
+}
+
+hr {
+    border-color: #9b9b9b;
+}
+
+/* Links */
+
+a {
+    text-underline-offset: 0.1em;
+    text-decoration: none;
+}
+
+a:link {
+    color: #00ddff;
+}
+
+a:visited {
+    color: #dc8bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Lists */
+
+li {
+    line-height: 1.8;
+    margin: 10px;
+}
+
+li.post-item {
+    margin-bottom: 30px;
+    line-height: 1.5em;
+    list-style: none;
+}
+
+li.post-item>a {
+    font-size: 1.5em;
+}
+
+ul.comma-list {
+    list-style: none;
+    display: inline;
+    padding: 0;
+}
+
+ul.comma-list li {
+    display: inline;
+    line-height: 1;
+    margin: 0;
+}
+
+ul.comma-list li:after {
+    content: ", ";
+}
+
+ul.comma-list li:last-child:after {
+    content: "";
+}
+
+/* Tables */
+
+table {
+    border-collapse: collapse;
+    background-color: #2f2f2f;
+    box-shadow: 0 0 15px #000000;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td {
+    padding: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #121212;
+}
+
+
+/* Images */
+
+img {
+    display: block;
+    width: 95%;
+    height: auto;
+    margin: 25px auto 25px auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #000000;
+}
+
+
+/* Navigation bar */
+
+#nav a {
+    padding: 20px;
+    color: white;
+    display: inline-block;
+}
+
+#nav .active {
+    font-weight: bold;
+}
+
+/* Footer */
+
+#footer {
+    width: 100%;
+    margin-top: 80px;
+    box-shadow: 0 0 10px black;
+    padding: 30px 0 30px 0;
+    text-align: center;
+}
+
+#footer a {
+    padding: 10px;
+    color: white;
+    display: inline-block;
+}
+
+/* Canvas */
+#glcanvas {
+    width: 100%;
+    height: min(800px, 90vh);
+    border-radius: 10px;
+}
