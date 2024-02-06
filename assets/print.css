@@ -1,0 +1,20 @@
+@media print {
+
+    /* All your print styles go here */
+    body {
+        background: white;
+        color: black;
+    }
+
+    main::after {
+        content: "By Marcin Anforowicz";
+    }
+
+    * {
+        box-shadow: none !important;
+    }
+
+    #nav, #footer {
+        visibility: hidden;
+    }
+}
