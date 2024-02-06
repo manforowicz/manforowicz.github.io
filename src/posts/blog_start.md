@@ -1,6 +1,6 @@
 ---
 title: Starting a Blog
-date: 2023-02-05
+date: 2024-02-06
 tags: [delta, epsilon]
 ---
 
