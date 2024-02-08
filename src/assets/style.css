@@ -1,4 +1,4 @@
-/* CSS SHOULD BE UNDER 200 LINES AT ALL COSTS.
+/* CSS SHOULD ALWAYS BE UNDER 300 LINES LONG.
 OTHERWISE YOU'RE DOING SOMETHING REALLY WRONG.
 */
 
@@ -13,7 +13,6 @@ body {
     margin: 0;
     min-height: 100vh;
     display: flex;
-    align-items: center;
     flex-direction: column;
     font-family: FiraSans, sans-serif;
     background-color: #1e1e1e;
@@ -24,6 +23,7 @@ body {
 main {
     flex: 1;
     width: min(95%, 800px);
+    margin: auto;
 }
 
 p {
@@ -45,7 +45,7 @@ h1 {
 
 h2 {
     line-height: 2em;
-    border-bottom: 1px solid #9b9b9b;
+    border-bottom: 1px solid #595959;
 }
 
 h2,
@@ -54,16 +54,7 @@ h4 {
     margin-top: 50px;
 }
 
-hr {
-    border-color: #9b9b9b;
-}
-
 /* Links */
-
-a {
-    text-underline-offset: 0.1em;
-    text-decoration: none;
-}
 
 a:link {
     color: #00ddff;
@@ -74,7 +65,8 @@ a:visited {
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #ffffff;
+    text-decoration: underline !important;
 }
 
 /* Lists */
@@ -85,13 +77,14 @@ li {
 }
 
 li.post-item {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 1.5em;
     list-style: none;
 }
 
 li.post-item>a {
     font-size: 1.5em;
+    text-decoration: none;
 }
 
 ul.comma-list {
@@ -104,6 +97,10 @@ ul.comma-list li {
     display: inline;
     line-height: 1;
     margin: 0;
+}
+
+ul.comma-list a {
+    text-decoration: none;
 }
 
 ul.comma-list li:after {
@@ -146,32 +143,29 @@ img {
 }
 
 
-/* Navigation bar */
+/* Navigation bar and footer */
 
-#nav a {
-    padding: 20px;
-    color: white;
-    display: inline-block;
+#navbar,
+#footer {
+    text-align: center;
 }
 
-#nav .active {
+#navbar a,
+#footer a {
+    padding: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#navbar .active {
     font-weight: bold;
 }
-
-/* Footer */
 
 #footer {
     width: 100%;
     margin-top: 80px;
     box-shadow: 0 0 10px black;
-    padding: 30px 0 30px 0;
-    text-align: center;
-}
-
-#footer a {
-    padding: 10px;
-    color: white;
-    display: inline-block;
+    padding: 20px 0 35px 0;
 }
 
 /* Canvas */
