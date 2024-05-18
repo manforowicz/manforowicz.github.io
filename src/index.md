@@ -14,7 +14,7 @@ I enjoy making websites for student organizations at the University of Washingto
 I teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club at the University of Washington. Here are some pictures and videos from that:
 
 <div class="grid">
-    <video width="852" height="480" controls>
+    <video width="852" height="480" controls preload="metadata">
         <source src="/assets/rc_plane.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
