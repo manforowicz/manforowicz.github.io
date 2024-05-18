@@ -131,15 +131,33 @@ tr:nth-child(even) {
 }
 
 
-/* Images */
+/* Content */
 
-img {
+img, video {
     display: block;
     width: 95%;
     height: auto;
     margin: 25px auto 25px auto;
     border-radius: 15px;
     box-shadow: 0 0 10px #000000;
+}
+
+iframe {
+    display: block;
+    margin: 25px auto 25px auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #000000;
+}
+
+.grid {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+#glcanvas {
+    width: 100%;
+    height: min(800px, 90vh);
+    border-radius: 10px;
 }
 
 
@@ -166,11 +184,4 @@ img {
     margin-top: 80px;
     box-shadow: 0 0 10px black;
     padding: 20px 0 35px 0;
-}
-
-/* Canvas */
-#glcanvas {
-    width: 100%;
-    height: min(800px, 90vh);
-    border-radius: 10px;
 }

@@ -2,7 +2,7 @@
 title: Boids
 date: 2022-06-01
 modified: 2024-01-05
-tags: [alpha, beta, gamma]
+tags: [rust, simulation]
 ---
 
 ## Emergent Behavior

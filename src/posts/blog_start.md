@@ -1,7 +1,8 @@
 ---
 title: Starting a Blog
 date: 2024-02-06
-tags: [delta, epsilon]
+modified: 2024-05-17
+tags: [meta]
 ---
 
 Welcome to my new blog!

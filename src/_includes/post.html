@@ -2,15 +2,20 @@
 layout: "base.html"
 ---
 
+{%- comment -%}
+
+Template for a normal post.
+
+{%- endcomment -%}
+
 <div>
     <em>
         Posted
         <strong><time datetime="{{ page.date | machineDate }}">{{ page.date | postDate }}</time></strong>
-        {%- assign lastModified = modified | toDate -%}
-        {% if lastModified %}
+        {% if modified %}
         and modified
-        <strong><time datetime="{{ lastModified | machineDate }}">
-                {{ lastModified | postDate }}
+        <strong><time datetime="{{ modified | machineDate }}">
+                {{ modified | postDate }}
             </time></strong>
         {%- endif %}
 
