@@ -4,20 +4,19 @@
 <head>
     <title>Marcin's Website</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Marcin Anforowicz's website">
-    <meta name="keywords" content="Marcin, Anforowicz, blog, computer science, math, programming, competitive programming, Rust">
+    <meta name="keywords" content="blog, computer science, math, programming, competitive programming, Rust">
     <meta name="author" content="Marcin Anforowicz">
-    <meta property="og:title" content="Marcin's Website" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="/" />
-    <meta property="og:image" content="/assets/window.jpg" />
+    <meta property="og:title" content="Marcin's Website">
+    <meta property="og:description" content="Marcin Anforowicz's website">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/assets/window.jpg">
     <link rel="icon" href="/assets/icon.ico">
     <link rel="icon" href="/assets/icon.svg">
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="/assets/prism.css">
     <link rel="stylesheet" media="print" href="/assets/print.css">
-    <link rel="canonical" href="/" />
 </head>
 
 <body>
@@ -31,29 +30,48 @@
         <h1>Marcin's Website</h1>
         <p>Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and engineering.
 Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/resume.pdf" target="_blank">resume.</a></p>
-<img src="/assets/window.jpg" alt="Marcin looking through a window." width="1944" height="1296" style="width: 50%;">
-<p>I'm a certified amateur radio operator since 2019 (callsign: KJ7JCN).
-I enjoy exploring creative radio protocols such as <a href="https://en.wikipedia.org/wiki/WSPR_(amateur_radio_software)">WSPR</a>, <a href="https://en.wikipedia.org/wiki/Internet_Radio_Linking_Project">IRLP</a>, and <a href="https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System">APRS</a>.</p>
-<p>I enjoy making websites for student organizations at the University of Washington. I maintain the websites of <a href="https://huskysat.org/team">Husky Satellite Lab</a> (<a href="https://github.com/UWCubeSat/hsl-website">code</a>) and <a href="https://uw-programming.netlify.app/">Competitive Programming Club</a> (<a href="https://github.com/manforowicz/uwcp-site">code</a>).</p>
-<p>I teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club at the University of Washington. Here are some pictures and videos from that:</p>
-<div class="grid">
-    <video width="852" height="480" controls preload="metadata">
-        <source src="/assets/rc_plane.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <img src="/assets/rc_planes.jpg" alt="RC Plane parts" width="1920" height="1440">
+<p><a href="/assets/window.jpg"><img alt="Marcin looking through a window." style="width: 50%;" loading="lazy" decoding="async" src="/img/I9tu4Gkh2X-400.jpeg" width="1944" height="1296" srcset="/img/I9tu4Gkh2X-400.jpeg 400w, /img/I9tu4Gkh2X-800.jpeg 800w, /img/I9tu4Gkh2X-1200.jpeg 1200w, /img/I9tu4Gkh2X-1944.jpeg 1944w" sizes="(max-width: 50rem) 100vw, 50rem"></a></p>
+<h2>Circuit Boards</h2>
+<p>I really like designing circuit boards.
+Here are a few that I'm particularly proud of:</p>
+<div class="horizontal-container">
+    <p>As an engineering intern at <a href="https://www.wibotic.com/">WiBotic</a>, I designed a stackable circuit board to hold charger modules on a shared CAN bus. It's used for running automated CAN bus tests.
+    I also wrote over 3000 lines of <a href="https://github.com/wibotic/socketcand_translate">ESP32 firmware</a>
+    to allow remotely connecting to the CAN bus via internet.</p>
+    <a href="/assets/can_test_pcb.jpg"><img alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" src="/img/GXS4eFD3oO-400.jpeg" width="4032" height="3024" srcset="/img/GXS4eFD3oO-400.jpeg 400w, /img/GXS4eFD3oO-800.jpeg 800w, /img/GXS4eFD3oO-1200.jpeg 1200w, /img/GXS4eFD3oO-4032.jpeg 4032w" sizes="(max-width: 50rem) 100vw, 50rem"></a>
 </div>
-<p>My favorite programming language is <a href="https://doc.rust-lang.org/book/">Rust</a>. I'm working on a peer-to-peer file transfer project called <a href="https://github.com/manforowicz/gday">gday</a>. It's still in an early phase of development.</p>
+<div class="horizontal-container">
+    <a href="/assets/can_test_pcb_regulator.jpg"><img alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" src="/img/--Cz44dCv6-400.jpeg" width="4032" height="3024" srcset="/img/--Cz44dCv6-400.jpeg 400w, /img/--Cz44dCv6-800.jpeg 800w, /img/--Cz44dCv6-1200.jpeg 1200w, /img/--Cz44dCv6-4032.jpeg 4032w" sizes="(max-width: 50rem) 100vw, 50rem"></a>
+    <p>To supply 3.3 volts to all the charger modules on my PCB, I designed and soldered a simple integrated buck converter.</p>
+</div>
+<div class="horizontal-container">
+    <p>As a member of <a href="https://huskysat.org/">Husky Satellite Lab</a>
+    I used <a href="https://www.kicad.org/">KiCad</a> to design circuit boards that will fly on HuskySat-2. Here's a photograph of a radio I designed, based heavily on <a href="https://github.com/OpenLST/openlst">OpenLST</a>.</p>
+    <a href="/assets/circuit.jpg"><img alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" src="/img/tJHlWK4Go6-400.jpeg" width="1920" height="1440" srcset="/img/tJHlWK4Go6-400.jpeg 400w, /img/tJHlWK4Go6-800.jpeg 800w, /img/tJHlWK4Go6-1200.jpeg 1200w, /img/tJHlWK4Go6-1920.jpeg 1920w" sizes="(max-width: 50rem) 100vw, 50rem"></a>
+</div>
+<p>At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of a conventional wire-wound coil, it uses an integrated PCB spiral. Here's a video I made about it:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cGJYCe6mGR0?si=WpQh7-10B17vfXuP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2>Personal Projects</h2>
+<p>Did you know I'm an avid <a href="https://doc.rust-lang.org/book/">rustacean</a>? 🦀 I'm currently working on a peer-to-peer file transfer tool called <a href="https://github.com/manforowicz/gday">Gday</a>. It's still in an early phase of development. Also, check out this <a href="/flock/">boid simulation</a> I wrote in Rust!</p>
 <pre class="language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>I enjoy making educational YouTube videos such as <em>The Just One More Paradox</em> (see below).
 I made this video before I had any formal education in probability, so the explanations aren't very rigorous, but all the concepts still hold.
 I <a href="https://github.com/manforowicz/Manim-Videos">programmed the animations</a> for this video using <a href="https://www.manim.community/">Manim</a>, an open source visualization library.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_FuuYSM7yOo?si=ItAT7R61RR8jYebA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<p>I'm an active member of Husky Satellite Lab. Currently I'm using <a href="https://www.kicad.org/">KiCad</a> to design circuit boards that will fly on HuskySat-2. Here's a photograph of a radio board I designed (based heavily on <a href="https://github.com/OpenLST/openlst">OpenLST</a>), as well as a video I made about magnetorquers:</p>
-<img src="/assets/circuit.jpg" alt="Circuit board." width="1920" height="1440">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cGJYCe6mGR0?si=19NVcClhVYV5obBS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_FuuYSM7yOo?si=1e5alMVAzM3schbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>I'm a certified amateur radio operator since 2019 (callsign: KJ7JCN).
+I enjoy exploring creative radio protocols such as <a href="https://en.wikipedia.org/wiki/WSPR_(amateur_radio_software)">WSPR</a>, <a href="https://en.wikipedia.org/wiki/Internet_Radio_Linking_Project">IRLP</a>, and <a href="https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System">APRS</a>.</p>
+<h2>University of Washington</h2>
+<p>I enjoy making websites for student organizations at the University of Washington. I maintain the websites of <a href="https://huskysat.org/team">Husky Satellite Lab</a> (<a href="https://github.com/UWCubeSat/hsl-website">code</a>) and <a href="https://uw-programming.netlify.app/">Competitive Programming Club</a> (<a href="https://github.com/manforowicz/uwcp-site">code</a>).</p>
+<p>I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here are some pictures and videos from that:</p>
+<div class="horizontal-container">
+    <video width="852" height="480" controls preload="metadata">
+        <source src="/assets/rc_plane.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <a href="/assets/rc_planes.jpg"><img alt="RC Plane parts" style="width: 90%;" loading="lazy" decoding="async" src="/img/oiV9vtt2sN-400.jpeg" width="1920" height="1440" srcset="/img/oiV9vtt2sN-400.jpeg 400w, /img/oiV9vtt2sN-800.jpeg 800w, /img/oiV9vtt2sN-1200.jpeg 1200w, /img/oiV9vtt2sN-1920.jpeg 1920w" sizes="(max-width: 50rem) 100vw, 50rem"></a>
+</div>
 <p>Some relevant courses I've taken at the University of Washington include:</p>
 <ul>
 <li>
@@ -79,7 +97,8 @@ I <a href="https://github.com/manforowicz/Manim-Videos">programmed the animation
 </li>
 </ul>
 <h2>Book Recommendations</h2>
-<p>All of these books have helped me understand the forest instead of just seeing the trees.</p>
+<p>Here's a list of non-fiction books I enjoyed reading.
+All of them have helped me understand the forest instead of just seeing the trees.</p>
 <h3><a href="https://www.goodreads.com/book/show/11324722">The Righteous Mind</a> - Jonathan Haidt, Simona Drelciuc</h3>
 <p>Humans have evolved a gut feeling to judge things as moral or immoral.
 How does our moral compass work, and what evolutionary purpose does it serve?
@@ -94,25 +113,19 @@ How does it fuel varying political views?</p>
 <p>Two parties with different goals, motives, and incentives, come to the negotiation table. How can they come to a mutually beneficial agreement?</p>
 <p>This book derives a comprehensive framework for analyzing negotiations and creating shared value that benefits both parties. The art of negotiation is so much more than just back-and-forth haggling.</p>
 <h3><a href="https://www.goodreads.com/en/book/show/50878951">How to Drive a Nuclear Reactor</a> - Colin Tucker</h3>
-<p>Ever wondered how a nuclear reactor works? How do they reliably and safely satisfy over 10% of the world's electricity needs? This book, written by a reactor operator, strikes the perfect balance between dumbed-down and too-technical.</p>
-<h3><a href="https://www.goodreads.com/en/book/show/3028">Economics in One Lesson</a> - Henry Hazlitt</h3>
-<p>Disclaimer: This book doesn't teach economic analysis.
-Written in 1946, it's a rant against certain economic policies.
-Treat this book with a large grain of salt, because unlike the others listed here, it's quite one-sided.</p>
-<p>That said, I recommend reading it to develop a well-rounded understanding of the reasoning behind free market economics.
-It makes thought-provoking arguments against certain forms of government intervention.
-Read it with an open mind, and you'll have a lot to think about!</p>
+<p>Ever wondered how a nuclear reactor works? How do they reliably and safely produce <a href="https://ourworldindata.org/electricity-mix">10% of the world's electricity</a>? This book, written by a reactor operator, strikes the perfect balance between dumbed-down and too-technical.</p>
 
     </main>
+
+    <footer id="footer">
+        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
+        <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
+        <a rel="noopener noreferrer" href="https://github.com/manforowicz">GitHub</a>
+        <br><br>
+        <small>
+            By Marcin Anforowicz (manforowicz at gmail dot com)
+        </small>
+    </footer>
 </body>
-<footer id="footer">
-    <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
-    <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
-    <a rel="noopener noreferrer" href="https://github.com/manforowicz">Github</a>
-    <br><br>
-    <small>
-        <div>By Marcin Anforowicz (manforowicz at gmail dot com)</div>
-    </small>
-</footer>
 
 </html>

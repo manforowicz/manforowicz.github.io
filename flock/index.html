@@ -4,20 +4,19 @@
 <head>
     <title>Boids</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Marcin Anforowicz's website">
-    <meta name="keywords" content="Marcin, Anforowicz, blog, computer science, math, programming, competitive programming, Rust">
+    <meta name="keywords" content="blog, computer science, math, programming, competitive programming, Rust">
     <meta name="author" content="Marcin Anforowicz">
-    <meta property="og:title" content="Boids" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="/flock/" />
-    <meta property="og:image" content="/assets/window.jpg" />
+    <meta property="og:title" content="Boids">
+    <meta property="og:description" content="Marcin Anforowicz's website">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/assets/window.jpg">
     <link rel="icon" href="/assets/icon.ico">
     <link rel="icon" href="/assets/icon.svg">
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="/assets/prism.css">
     <link rel="stylesheet" media="print" href="/assets/print.css">
-    <link rel="canonical" href="/flock/" />
 </head>
 
 <body>
@@ -29,37 +28,42 @@
     </header>
     <main>
         <h1>Boids</h1>
-        <div>
-    <em>
+        <em>
+    <span>
         Posted
         <strong><time datetime="2022-06-01T00:00:00.000Z">1 June 2022</time></strong>
         
         and modified
-        <strong><time datetime="2024-01-05T00:00:00.000Z">
-                5 January 2024
+        <strong><time datetime="2024-09-02T00:00:00.000Z">
+                2 September 2024
             </time></strong>
+    </span>
 
-        <span style="float:right;">
-            <strong>Tags:</strong>
-            <ul class="comma-list"><li><a href="/tags/rust/" class="post-tag">rust</a></li><li><a href="/tags/simulation/" class="post-tag">simulation</a></li>
-            </ul>
-        </span>
-    </em>
-</div>
+    <span style="float:right;">
+        <strong>Tags:</strong>
+        <ul class="comma-list"><li><a href="/tags/rust/" class="post-tag">rust</a></li><li><a href="/tags/simulation/" class="post-tag">simulation</a></li>
+        </ul>
+    </span>
+</em>
 
-<h2>Emergent Behavior</h2>
-<p><a href="https://en.wikipedia.org/wiki/Boids">Boids</a> are an artificial life form invented by Craig Reynolds in 1986. Each boid follows a set of simple rules, which leads to interesting flock behavior. This is an example of <a href="https://en.wikipedia.org/wiki/Swarm_intelligence">swarm intellegence</a>, an expression coined by Gerardo Beni and Jing Wang in 1989.</p>
-<p><a href="https://en.wikipedia.org/wiki/Emergence">Emergent behavior</a> is the ability of simple rules to create unpredictable and complex systems. At first glance, life seems to create order out of disorder, which seems counterintuitive. We, humans, are built of individual particles following the laws of physics, and yet we have complex personalities, interactions, and emotions. We even create <a href=".">computer simulations</a> to mimic the processes that make our existence possible.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Boids">Boids</a> are an artificial life form invented by Craig Reynolds in 1986.
+Each boid follows a set of simple rules, which leads to interesting flock behavior.
+This is an example of <a href="https://en.wikipedia.org/wiki/Swarm_intelligence">swarm intellegence</a>, an expression coined by Gerardo Beni and Jing Wang in 1989.</p>
+<p><a href="https://en.wikipedia.org/wiki/Emergence">Emergent behavior</a> is the ability of simple rules to create unpredictable and complex systems.
+We, humans, are built of individual particles following the laws of physics, and yet we have complex personalities, interactions, and emotions.
+We even create <a href=".">computer simulations</a> to mimic the emergent behavior that makes our existence possible.</p>
 <p>Press &quot;START!&quot; to run the simulation, and tweak the sliders to experiment with different behaviors.</p>
 <p><canvas id="glcanvas"></canvas></p>
 <h2>Rules</h2>
-<p>Each boid follows only these rules:</p>
+<p>Each boid in my simulation follows only these rules:</p>
 <ol>
-<li>Each boid senses only its 6 nearest neighbors.</li>
-<li>When a boid gets too close or too far from its neighbors, it applies a corresponding force to return to the preset distance.</li>
+<li>Each boid senses only its 6 nearest neighbors and the predator.</li>
+<li>Each boid has an attraction force to its neighbors.</li>
+<li>When a boid gets too close to a neighbor, it applies a separation force.</li>
 <li>Each boid applies a force to minimize velocity difference in relation to its neighbors.</li>
-<li>Each boid applies a force to accelerate or deccelerate to the preset speed.</li>
-<li>Each boid applies a force toward attractor objects, and away from repeller objects.</li>
+<li>When a boid gets too close to a predator, it applies a force to get away from it.</li>
+<li>Each boid applies a force to accelerate or deccelerate to its target speed.</li>
 </ol>
 <h2>Sliders</h2>
 <p>Mess around with the following sliders to discover new behaviors.</p>
@@ -77,32 +81,35 @@
         <td>The distance every boid tries to maintain from its neighbors.</td>
     </tr>
     <tr>
-        <td>Separation strength</td>
+        <td>Separation weight</td>
         <td>How strongly the boids try to return to the spacing goal if they're too close.</td>
     </tr>
     <tr>
-        <td>Cohesion strength</td>
-        <td>How strongly the boids try to return to the spacing goal if they're too far.</td>
+        <td>Cohesion weight</td>
+        <td>How strongly the boids are attracted to their neighbors.</td>
     </tr>
     <tr>
-        <td>Alignment strength</td>
-        <td>How strongly the boids try to match their velocity to that of their neighbors.</td>
+        <td>Alignment weight</td>
+        <td>How strongly the boids try to match the velocity of their neighbors.</td>
     </tr>
     <tr>
         <td>Target speed</td>
         <td>What speed each boid attempts to maintain.</td>
     </tr>
     <tr>
-        <td>Speed strength</td>
+        <td>Speed weight</td>
         <td>How strongly boids try to maintain their target speed.</td>
     </tr>
 </table>
-<p>Click on the canvas to spawn obstacles, and click on them again to toggle their type. Yellow spheres attract boids and red spheres repel boids.</p>
 <h2>Code</h2>
-<p>Having every boid measure distance with all other boids to find its closest neighbors would require a quadratic time complexity O(n<sup>2</sup>). Thankfully, a data structure called the <a href="https://en.wikipedia.org/wiki/K-d_tree">KD-tree</a> sorts boids in a way that lowers time complexity to O(nlogn). KD-trees are like <a href="https://en.wikipedia.org/wiki/Binary_tree">binary trees</a>, but they alternate between comparing X and Y coordinates depending on the row depth. I used an unbalanced, pre-implemented KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kiddo</a> crate.</p>
-<p><img src="/assets/kd-tree.png" alt="KD-Tree" title="KD-TREE"></p>
-<p>I wrote the actual simulation and rendering in the Rust <a href="https://docs.rs/macroquad/latest/macroquad/">Macroquad</a> crate. I compiled everything to web assembly (WASM) so it can be efficiently run online. View this sim's code on <a href="https://github.com/manforowicz/boids">github</a>.</p>
+<p>Having every boid measure distance with all other boids to find its closest neighbors would require an <code>O(n<sup>2</sup>)</code> quadratic time complexity.
+Thankfully, a data structure called the <a href="https://en.wikipedia.org/wiki/K-d_tree">KD-tree</a> sorts boids in a way that lowers time complexity to <code>O(n log(n))</code>.
+I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kiddo</a> library.</p>
+<p><a href="/assets/kd-tree.png"><img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/4QQSyexX2X-400.jpeg" width="1593" height="782" srcset="/img/4QQSyexX2X-400.jpeg 400w, /img/4QQSyexX2X-800.jpeg 800w, /img/4QQSyexX2X-1200.jpeg 1200w, /img/4QQSyexX2X-1593.jpeg 1593w" sizes="(max-width: 50rem) 100vw, 50rem"></a></p>
+<p>I wrote the actual simulation and rendering with the Rust <a href="https://docs.rs/macroquad/latest/macroquad/">Macroquad</a> library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on <a href="https://github.com/manforowicz/boids">GitHub</a>.</p>
 <h2>APCSA Project Write-Up</h2>
+<p>Here's what I wrote when I made this project for my 10th grade computer science class:</p>
+<blockquote>
 <p>At the beginning of this project, I wasn't quite sure what I wanted to make. Then I remembered seeing a simulation of birds flocking and decided to make my own. I chose to write in Rust because it's a fast and practical language.</p>
 <p>I was torn between using the two main Rust game engines, Bevy and Macroquad. Bevy uses an ECS (entity component system), meaning I give it every entity I create, and it manages them for me. I settled on Macroquad for its simplicity that stems from its lack of an ECS.</p>
 <p>At the beginning, I easily implemented a system where the boids wrap to the other side of the screen when they go over. However, making forces wrap around the screen was tricky. I had to create a method which uses an if statement to wrap the force in the direction that minimizes distance.</p>
@@ -116,23 +123,26 @@
 <p>Tesla STEM High School</p>
 <p>APCSA Period 4</p>
 <p>Mr. Thompson, Mr. Kilian</p>
-<script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
+</blockquote>
+<script src="/assets/mq_js_bundle.js"></script>
 <script>
     load("/assets/flocking_sim.wasm");
 </script>
 
+<br>
 <hr><p><span style="float:right;">Next: <a href="/blog_start/">Starting a Blog</a></span>
 </p>
     </main>
+
+    <footer id="footer">
+        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
+        <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
+        <a rel="noopener noreferrer" href="https://github.com/manforowicz">GitHub</a>
+        <br><br>
+        <small>
+            By Marcin Anforowicz (manforowicz at gmail dot com)
+        </small>
+    </footer>
 </body>
-<footer id="footer">
-    <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
-    <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
-    <a rel="noopener noreferrer" href="https://github.com/manforowicz">Github</a>
-    <br><br>
-    <small>
-        <div>By Marcin Anforowicz (manforowicz at gmail dot com)</div>
-    </small>
-</footer>
 
 </html>

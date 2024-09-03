@@ -1,5 +1,6 @@
-/* CSS SHOULD ALWAYS BE UNDER 300 LINES LONG.
-OTHERWISE YOU'RE DOING SOMETHING REALLY WRONG.
+/*
+If your CSS is over 500 lines long
+then you're doing something wrong.
 */
 
 @font-face {
@@ -22,7 +23,7 @@ body {
 
 main {
     flex: 1;
-    width: min(95%, 800px);
+    width: min(95%, 50rem);
     margin: auto;
 }
 
@@ -40,18 +41,18 @@ h2 {
 }
 
 h1 {
-    margin-bottom: 50px;
+    margin-bottom: 1.5em;
 }
 
 h2 {
-    line-height: 2em;
+    padding-bottom: 0.4em;
     border-bottom: 1px solid #595959;
 }
 
 h2,
 h3,
 h4 {
-    margin-top: 50px;
+    margin-top: 2em;
 }
 
 /* Links */
@@ -73,11 +74,10 @@ a:hover {
 
 li {
     line-height: 1.8;
-    margin: 10px;
+    margin: 1em;
 }
 
 li.post-item {
-    margin-bottom: 20px;
     line-height: 1.5em;
     list-style: none;
 }
@@ -116,14 +116,14 @@ ul.comma-list li:last-child:after {
 table {
     border-collapse: collapse;
     background-color: #2f2f2f;
-    box-shadow: 0 0 15px #000000;
+    box-shadow: 0 0 0.5rem #000000;
     margin-left: auto;
     margin-right: auto;
 }
 
 th,
 td {
-    padding: 15px;
+    padding: 1em;
 }
 
 tr:nth-child(even) {
@@ -133,31 +133,46 @@ tr:nth-child(even) {
 
 /* Content */
 
-img, video {
+img,
+video {
     display: block;
-    width: 95%;
+    max-width: 100%;
     height: auto;
-    margin: 25px auto 25px auto;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #000000;
+    margin: 2rem auto 2rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem #000000;
 }
 
 iframe {
     display: block;
-    margin: 25px auto 25px auto;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #000000;
+    max-width: 100%;
+    margin: 2rem auto 2rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem #000000;
 }
 
-.grid {
-    display: grid;
-    grid-auto-flow: column;
-}
 
 #glcanvas {
     width: 100%;
-    height: min(800px, 90vh);
-    border-radius: 10px;
+    height: min(50rem, 80vh);
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem #000000;
+}
+
+blockquote {
+    margin: 1em;
+    padding-left: 1em;
+    border-left: 0.3em solid #444444;
+}
+
+/* Containers */
+
+.horizontal-container {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    grid-auto-flow: column;
 }
 
 
@@ -170,7 +185,7 @@ iframe {
 
 #navbar a,
 #footer a {
-    padding: 20px;
+    padding: 1.5rem;
     display: inline-block;
     text-decoration: none;
 }
@@ -180,8 +195,8 @@ iframe {
 }
 
 #footer {
-    width: 100%;
-    margin-top: 80px;
-    box-shadow: 0 0 10px black;
-    padding: 20px 0 35px 0;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    box-shadow: 0 0 0.5rem #000000;
 }
