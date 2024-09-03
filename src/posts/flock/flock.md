@@ -1,15 +1,17 @@
 ---
 title: Boids
 date: 2022-06-01
-modified: 2024-01-05
+modified: 2024-09-02
 tags: [rust, simulation]
 ---
 
-## Emergent Behavior
-[Boids](https://en.wikipedia.org/wiki/Boids) are an artificial life form invented by Craig Reynolds in 1986. Each boid follows a set of simple rules, which leads to interesting flock behavior. This is an example of [swarm intellegence](https://en.wikipedia.org/wiki/Swarm_intelligence), an expression coined by Gerardo Beni and Jing Wang in 1989.
+[Boids](https://en.wikipedia.org/wiki/Boids) are an artificial life form invented by Craig Reynolds in 1986.
+Each boid follows a set of simple rules, which leads to interesting flock behavior.
+This is an example of [swarm intellegence](https://en.wikipedia.org/wiki/Swarm_intelligence), an expression coined by Gerardo Beni and Jing Wang in 1989.
 
-
-[Emergent behavior](https://en.wikipedia.org/wiki/Emergence) is the ability of simple rules to create unpredictable and complex systems. At first glance, life seems to create order out of disorder, which seems counterintuitive. We, humans, are built of individual particles following the laws of physics, and yet we have complex personalities, interactions, and emotions. We even create [computer simulations](.) to mimic the processes that make our existence possible.
+[Emergent behavior](https://en.wikipedia.org/wiki/Emergence) is the ability of simple rules to create unpredictable and complex systems.
+We, humans, are built of individual particles following the laws of physics, and yet we have complex personalities, interactions, and emotions. 
+We even create [computer simulations](.) to mimic the emergent behavior that makes our existence possible.
 
 Press "START!" to run the simulation, and tweak the sliders to experiment with different behaviors.
 
@@ -17,13 +19,14 @@ Press "START!" to run the simulation, and tweak the sliders to experiment with d
 
 ## Rules
 
-Each boid follows only these rules:
+Each boid in my simulation follows only these rules:
 
-1. Each boid senses only its 6 nearest neighbors.
-2. When a boid gets too close or too far from its neighbors, it applies a corresponding force to return to the preset distance.
-3. Each boid applies a force to minimize velocity difference in relation to its neighbors.
-4. Each boid applies a force to accelerate or deccelerate to the preset speed.
-5. Each boid applies a force toward attractor objects, and away from repeller objects.
+1. Each boid senses only its 6 nearest neighbors and the predator.
+2. Each boid has an attraction force to its neighbors.
+3. When a boid gets too close to a neighbor, it applies a separation force.
+4. Each boid applies a force to minimize velocity difference in relation to its neighbors.
+5. When a boid gets too close to a predator, it applies a force to get away from it.
+4. Each boid applies a force to accelerate or deccelerate to its target speed.
 
 
 ## Sliders
@@ -44,42 +47,43 @@ Mess around with the following sliders to discover new behaviors.
         <td>The distance every boid tries to maintain from its neighbors.</td>
     </tr>
     <tr>
-        <td>Separation strength</td>
+        <td>Separation weight</td>
         <td>How strongly the boids try to return to the spacing goal if they're too close.</td>
     </tr>
     <tr>
-        <td>Cohesion strength</td>
-        <td>How strongly the boids try to return to the spacing goal if they're too far.</td>
+        <td>Cohesion weight</td>
+        <td>How strongly the boids are attracted to their neighbors.</td>
     </tr>
     <tr>
-        <td>Alignment strength</td>
-        <td>How strongly the boids try to match their velocity to that of their neighbors.</td>
+        <td>Alignment weight</td>
+        <td>How strongly the boids try to match the velocity of their neighbors.</td>
     </tr>
     <tr>
         <td>Target speed</td>
         <td>What speed each boid attempts to maintain.</td>
     </tr>
     <tr>
-        <td>Speed strength</td>
+        <td>Speed weight</td>
         <td>How strongly boids try to maintain their target speed.</td>
     </tr>
 
 </table>
 
-Click on the canvas to spawn obstacles, and click on them again to toggle their type. Yellow spheres attract boids and red spheres repel boids.
-
-
 ## Code
 
-Having every boid measure distance with all other boids to find its closest neighbors would require a quadratic time complexity O(n<sup>2</sup>). Thankfully, a data structure called the [KD-tree](https://en.wikipedia.org/wiki/K-d_tree) sorts boids in a way that lowers time complexity to O(nlogn). KD-trees are like [binary trees](https://en.wikipedia.org/wiki/Binary_tree), but they alternate between comparing X and Y coordinates depending on the row depth. I used an unbalanced, pre-implemented KD-tree from the Rust [kiddo](https://docs.rs/kiddo/latest/kiddo/) crate.
+Having every boid measure distance with all other boids to find its closest neighbors would require an <code>O(n<sup>2</sup>)</code> quadratic time complexity.
+Thankfully, a data structure called the [KD-tree](https://en.wikipedia.org/wiki/K-d_tree) sorts boids in a way that lowers time complexity to `O(n log(n))`.
+I used a KD-tree from the Rust [kiddo](https://docs.rs/kiddo/latest/kiddo/) library.
 
+{% image "/assets/kd-tree.png", "An image of a KD-Tree" %}
 
-![KD-Tree](/assets/kd-tree.png "KD-TREE")
-
-
-I wrote the actual simulation and rendering in the Rust [Macroquad](https://docs.rs/macroquad/latest/macroquad/) crate. I compiled everything to web assembly (WASM) so it can be efficiently run online. View this sim's code on [github](https://github.com/manforowicz/boids).
+I wrote the actual simulation and rendering with the Rust [Macroquad](https://docs.rs/macroquad/latest/macroquad/) library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on [GitHub](https://github.com/manforowicz/boids).
 
 ## APCSA Project Write-Up
+
+Here's what I wrote when I made this project for my 10th grade computer science class:
+
+<blockquote>
 
 At the beginning of this project, I wasn't quite sure what I wanted to make. Then I remembered seeing a simulation of birds flocking and decided to make my own. I chose to write in Rust because it's a fast and practical language.
 
@@ -107,7 +111,9 @@ APCSA Period 4
 
 Mr. Thompson, Mr. Kilian
 
-<script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
+</blockquote>
+
+<script src="/assets/mq_js_bundle.js"></script>
 <script>
     load("/assets/flocking_sim.wasm");
 </script>

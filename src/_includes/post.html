@@ -8,8 +8,9 @@ Template for a normal post.
 
 {%- endcomment -%}
 
-<div>
-    <em>
+
+<em>
+    <span>
         Posted
         <strong><time datetime="{{ page.date | machineDate }}">{{ page.date | postDate }}</time></strong>
         {% if modified %}
@@ -18,22 +19,24 @@ Template for a normal post.
                 {{ modified | postDate }}
             </time></strong>
         {%- endif %}
+    </span>
 
-        <span style="float:right;">
-            <strong>Tags:</strong>
-            <ul class="comma-list">
-                {%- assign myTags = tags | filterTagList -%}
-                {% for tag in myTags -%}
-                {%- capture tagUrl -%}/tags/{{ tag | slugify }}/{%- endcapture -%}
-                <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
-                {%- endfor %}
-            </ul>
-        </span>
-    </em>
-</div>
+    <span style="float:right;">
+        <strong>Tags:</strong>
+        <ul class="comma-list">
+            {%- assign myTags = tags | filterTagList -%}
+            {% for tag in myTags -%}
+            {%- capture tagUrl -%}/tags/{{ tag | slugify }}/{%- endcapture -%}
+            <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
+            {%- endfor %}
+        </ul>
+    </span>
+</em>
+
 
 {{ content }}
 
+<br>
 <hr>
 
 {%- assign previousPost = collections.post | getPreviousCollectionItem -%}
