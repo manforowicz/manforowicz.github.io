@@ -5,6 +5,7 @@ then you're doing something wrong.
 
 @font-face {
     font-family: 'FiraSans';
+    font-display: swap;
     src: url("/assets/FiraSans-Light.woff") format('woff');
 }
 
