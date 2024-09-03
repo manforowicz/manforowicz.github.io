@@ -12,12 +12,7 @@
         content: "By Marcin Anforowicz";
     }
 
-    img, tr, table {
-        box-shadow: none;
-        border: 1px solid;
-    }
-
     #navbar, #footer {
-        visibility: hidden;
+        display: none;
     }
 }
