@@ -5,7 +5,7 @@ then you're doing something wrong.
 
 @font-face {
     font-family: 'FiraSans';
-    src: url("/assets/FiraSans-Light.ttf");
+    src: url("/assets/FiraSans-Light.woff") format('woff');
 }
 
 /* General */
