@@ -9,7 +9,7 @@ Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/r
 
 ## Circuit Boards
 
-I really like designing circuit boards.
+I enjoy designing circuit boards.
 Here are a few that I'm particularly proud of:
 
 <div class="horizontal-container">
@@ -77,9 +77,14 @@ Some relevant courses I've taken at the University of Washington include:
 
 - **The Hardware/Software Interface** - Here I learned to use gdb, read assembly, and understand memory layout.
 
-- **Introduction to Digital Design** - Here I made a snake game on an FPGA, by writing a multi-file system verilog program.
-
 - **Machine Learning** - Here I used PyTorch and Numpy to implement algorithms such as LASSO regression, stochastic gradient descent, and backpropagation.
+
+- **Introduction to Digital Design** - Here I wrote a snake game in SystemVerilog. SystemVerilog is a language that compiles into logic gates and can be run on FPGAs (field programmable gate arrays).
+
+<video width="854" height="480" controls preload="metadata" style="max-width: 75%;">
+    <source src="/assets/verilog_snake.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
 
 ## Book Recommendations
@@ -112,4 +117,4 @@ This book derives a comprehensive framework for analyzing negotiations and creat
 
 
 ### [How to Drive a Nuclear Reactor](https://www.goodreads.com/en/book/show/50878951) - Colin Tucker
-Ever wondered how a nuclear reactor works? How do they reliably and safely produce [10% of the world's electricity](https://ourworldindata.org/electricity-mix)? This book, written by a reactor operator, strikes the perfect balance between dumbed-down and too-technical.
+Ever wondered how a nuclear reactor works? How do they reliably and safely produce about [10% of the world's electricity](https://ourworldindata.org/electricity-mix)? This book, written by a reactor operator, strikes the perfect balance between dumbed-down and too-technical.
