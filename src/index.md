@@ -3,9 +3,21 @@ title: Marcin's Website
 ---
 
 Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and engineering.
-Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/resume.pdf" target="_blank">resume.</a>
+Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/resume.pdf" target="_blank">resume</a>
+or visit my <a href="https://github.com/manforowicz">GitHub</a> to learn more!
 
 {% image "/assets/window.jpg", "Marcin looking through a window.", 50 %}
+
+## Industry Experience
+
+In the summer of 2024, I had the pleasure of working as a software engineering intern at [WiBotic](https://www.wibotic.com/).
+Check out my [LinkedIn post](https://www.linkedin.com/posts/m-anforowicz_today-is-the-final-day-of-my-engineering-activity-7242941893976711169-C97v)
+and watch this video to learn more about my work there.
+
+<video width="960" height="540" controls preload="metadata" style="max-width: 75%;">
+    <source src="/assets/wibotic_internship_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
 ## Circuit Boards
 
