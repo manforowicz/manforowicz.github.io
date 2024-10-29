@@ -69,13 +69,7 @@ I enjoy making websites for student organizations at the University of Washingto
 
 I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here are some pictures and videos from that:
 
-<div class="horizontal-container">
-    <video width="852" height="480" controls preload="metadata">
-        <source src="/assets/rc_plane.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    {% image "/assets/rc_planes.jpg", "RC Plane parts" %}
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MtJTZ6KJV2U?si=ujwtz4EUnSX33SSN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Some relevant courses I've taken at the University of Washington include:
 
