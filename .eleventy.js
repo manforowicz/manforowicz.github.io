@@ -25,24 +25,16 @@ module.exports = function (eleventyConfig) {
     return dateObj.toISOString();
   });
 
-  // Get all keys of a collection.
-  eleventyConfig.addFilter('keys', obj => Object.keys(obj));
-
-  // Remove "all" and "post" from this list.
-  eleventyConfig.addFilter("filterTagList", (tags) => {
-    return (tags || []).filter(tag => !["all", "post"].includes(tag));
-  });
-
-
   eleventyConfig.addPlugin(syntaxHighlight);
 
   // Image shortcode
   eleventyConfig.addShortcode("image", async function (src, alt, width = 90) {
     let metadata = await Image(`${path.dirname(this.page.inputPath)}/${src}`, {
       widths: [400, 800, 1200, "auto"],
-      formats: ["jpeg"],
+      formats: ["jpg"],
       urlPath: "/img/",
-      outputDir: "public/img/"
+      outputDir: "public/img/",
+      filenameFormat: (id, src, width, format, options) => `${src.split("/").pop().split(".")[0]}-${width}.${format}`
     });
 
     let imageAttributes = {

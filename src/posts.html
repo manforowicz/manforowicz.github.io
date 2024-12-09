@@ -1,0 +1,12 @@
+---
+title: Marcin's Posts
+---
+
+<ul>
+    {%- for post in collections.post reversed -%}
+    <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a> - 
+        <time datetime="{{ post.date | machineDate }}">{{ post.date | postDate }}</time>
+    </li>
+    {%- endfor -%}
+</ul>

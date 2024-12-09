@@ -2,49 +2,29 @@
 layout: "base.html"
 ---
 
-{%- comment -%}
-
-Template for a normal post.
-
-{%- endcomment -%}
-
-
-<em>
-    <span>
-        Posted
-        <strong><time datetime="{{ page.date | machineDate }}">{{ page.date | postDate }}</time></strong>
-        {% if modified %}
-        and modified
-        <strong><time datetime="{{ modified | machineDate }}">
-                {{ modified | postDate }}
-            </time></strong>
-        {%- endif %}
-    </span>
-
-    <span style="float:right;">
-        <strong>Tags:</strong>
-        <ul class="comma-list">
-            {%- assign myTags = tags | filterTagList -%}
-            {% for tag in myTags -%}
-            {%- capture tagUrl -%}/tags/{{ tag | slugify }}/{%- endcapture -%}
-            <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
-            {%- endfor %}
-        </ul>
-    </span>
-</em>
+<div>
+    Posted on
+    <strong><time datetime="{{ page.date | machineDate }}">{{ page.date | postDate }}</time></strong>
+    {% if modified %}
+    and modified
+    <strong><time datetime="{{ modified | machineDate }}">
+            {{ modified | postDate }}
+        </time></strong>
+    {%- endif %}
+    by Marcin Anforowicz.
+</div>
 
 
 {{ content }}
 
-<br>
 <hr>
 
 {%- assign previousPost = collections.post | getPreviousCollectionItem -%}
 {%- assign nextPost = collections.post | getNextCollectionItem -%}
 
-<p>
+<div>
     {%- if previousPost %}<span>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></span>{%
     endif %}
     {%- if nextPost %}<span style="float:right;">Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title
             }}</a></span>{% endif %}
-</p>
+</div>

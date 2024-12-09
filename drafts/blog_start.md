@@ -1,23 +1,16 @@
 ---
 title: Starting a Blog
 date: 2024-02-06
-modified: 2024-05-17
-tags: [meta]
+modified: 2024-12-09
 ---
 
-Welcome to my new blog!
-Formerly I made YouTube videos, some of which became quite popular.
-However, I've decided to transition from videos to blog posts.
-
-Don't get me wrong, YouTube is great.
-Great enough to spend hours watching it.
-What exactly makes it so addicting?
+What makes YouTube so addicting?
 I'd argue it's the ease of consumption.
 You simply hit play, and that's it!
 The video runs its course, without the need for any active scrolling or reading.
 Even if it contains nothing of value, its self-playing stream of motion convinces your brain that it's doing something worthwhile.
 
-As soon as writers realized that video is more appealing than text, the video essay was born.
+As soon as writers realized the entincingness of videos, the video essay was born.
 Like an audio book, a video essay has a narrator reading some content.
 At best, it's overlaid with relevant video clips or visualizations.
 At worst, it's generic stock footage.

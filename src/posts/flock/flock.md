@@ -2,7 +2,6 @@
 title: Boids
 date: 2022-06-01
 modified: 2024-09-02
-tags: [rust, simulation]
 ---
 
 [Boids](https://en.wikipedia.org/wiki/Boids) are an artificial life form invented by Craig Reynolds in 1986.

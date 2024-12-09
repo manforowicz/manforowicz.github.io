@@ -1,5 +1,4 @@
 {
     "layout": "base.html",
-    "permalink": "{{ page.fileSlug }}/index.html",
-    "title": "Untitled"
+    "permalink": "{{ page.fileSlug }}/index.html"
 }
