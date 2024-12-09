@@ -45,13 +45,11 @@ At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of
 
 ## Personal Projects
 
-Did you know I'm an avid [rustacean](https://doc.rust-lang.org/book/)? 🦀 I'm currently working on a peer-to-peer file transfer tool called [Gday](https://github.com/manforowicz/gday). It's still in an early phase of development. Also, check out this [boid simulation](/flock/) I wrote in Rust!
+Did you know I'm an avid [rustacean](https://doc.rust-lang.org/book/)? 🦀 I created a file transfer tool called [Gday](https://github.com/manforowicz/gday), and wrote a [blog post](/gday/) about it.
 
-```rust
-fn main() {
-    println!("Hello world!");
-}
-```
+<script src="https://asciinema.org/a/692670.js" id="asciicast-692670" async="true"></script>
+
+Also, check out this [boid simulation](/flock/) I wrote in Rust!
 
 I enjoy making educational YouTube videos such as _The Just One More Paradox_ (see below).
 I made this video before I had any formal education in probability, so the explanations aren't very rigorous, but all the concepts still hold.
@@ -67,7 +65,7 @@ I enjoy exploring creative radio protocols such as [WSPR](https://en.wikipedia.o
 
 I enjoy making websites for student organizations at the University of Washington. I maintain the websites of [Husky Satellite Lab](https://huskysat.org/team) ([code](https://github.com/UWCubeSat/hsl-website)) and [Competitive Programming Club](https://uw-programming.netlify.app/) ([code](https://github.com/manforowicz/uwcp-site)).
 
-I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here are some pictures and videos from that:
+I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here's a video of me flying a DIY airplane our team built:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MtJTZ6KJV2U?si=ujwtz4EUnSX33SSN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -84,6 +82,12 @@ Some relevant courses I've taken at the University of Washington include:
 - **The Hardware/Software Interface** - Here I learned to use gdb, read assembly, and understand memory layout.
 
 - **Machine Learning** - Here I used PyTorch and Numpy to implement algorithms such as LASSO regression, stochastic gradient descent, and backpropagation.
+
+- **Operating Systems** - In this course I took an experimental kernel which runs directly in QEMU, and implemented system calls like `fork()`, `wait()`, `sbrk()`, `open()`, `write()`, and more. I implemented filesystem journaling, page table management, and page fault handling.
+
+- **Computer Security** - Computers are everywhere: cars, pacemakers, phones, airplanes, printers, etc. How can we prevent an attacker from shutting them down or extracting secrets? That was my guiding question as I learned about buffer overflows, cross-site scripting, SQL injections, double-free errors, and more.
+
+- **Introduction to Computer Communication Networks** - In this course I took a deep dive learning about network protocols including IEEE 802.11, ethernet, ARP, DHCP, IP, DNS, UDP, TCP, HTTP, and HTTPS.
 
 - **Introduction to Digital Design** - Here I wrote a snake game in SystemVerilog. SystemVerilog is a language that compiles into logic gates and can be run on FPGAs (field programmable gate arrays).
 
