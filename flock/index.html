@@ -28,23 +28,17 @@
     </header>
     <main>
         <h1>Boids</h1>
-        <em>
-    <span>
-        Posted
-        <strong><time datetime="2022-06-01T00:00:00.000Z">1 June 2022</time></strong>
         
-        and modified
-        <strong><time datetime="2024-09-02T00:00:00.000Z">
-                2 September 2024
-            </time></strong>
-    </span>
-
-    <span style="float:right;">
-        <strong>Tags:</strong>
-        <ul class="comma-list"><li><a href="/tags/rust/" class="post-tag">rust</a></li><li><a href="/tags/simulation/" class="post-tag">simulation</a></li>
-        </ul>
-    </span>
-</em>
+<div>
+    Posted on
+    <strong><time datetime="2022-06-01T00:00:00.000Z">1 June 2022</time></strong>
+    
+    and modified
+    <strong><time datetime="2024-09-02T00:00:00.000Z">
+            2 September 2024
+        </time></strong>
+    by Marcin Anforowicz.
+</div>
 
 
 <p><a href="https://en.wikipedia.org/wiki/Boids">Boids</a> are an artificial life form invented by Craig Reynolds in 1986.
@@ -105,7 +99,7 @@ We even create <a href=".">computer simulations</a> to mimic the emergent behavi
 <p>Having every boid measure distance with all other boids to find its closest neighbors would require an <code>O(n<sup>2</sup>)</code> quadratic time complexity.
 Thankfully, a data structure called the <a href="https://en.wikipedia.org/wiki/K-d_tree">KD-tree</a> sorts boids in a way that lowers time complexity to <code>O(n log(n))</code>.
 I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kiddo</a> library.</p>
-<p><a href="/assets/kd-tree.png"><img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/4QQSyexX2X-400.jpeg" width="1593" height="782" srcset="/img/4QQSyexX2X-400.jpeg 400w, /img/4QQSyexX2X-800.jpeg 800w, /img/4QQSyexX2X-1200.jpeg 1200w, /img/4QQSyexX2X-1593.jpeg 1593w" sizes="(max-width: 50rem) 100vw, 50rem"></a></p>
+<p><a href="/assets/kd-tree.png"><img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/kd-tree-400.jpeg" width="1593" height="782" srcset="/img/kd-tree-400.jpeg 400w, /img/kd-tree-800.jpeg 800w, /img/kd-tree-1200.jpeg 1200w, /img/kd-tree-1593.jpeg 1593w" sizes="(max-width: 50rem) 100vw, 50rem"></a></p>
 <p>I wrote the actual simulation and rendering with the Rust <a href="https://docs.rs/macroquad/latest/macroquad/">Macroquad</a> library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on <a href="https://github.com/manforowicz/boids">GitHub</a>.</p>
 <h2>APCSA Project Write-Up</h2>
 <p>Here's what I wrote when I made this project for my 10th grade computer science class:</p>
@@ -129,9 +123,8 @@ I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kid
     load("/assets/flocking_sim.wasm");
 </script>
 
-<br>
-<hr><p><span style="float:right;">Next: <a href="/blog_start/">Starting a Blog</a></span>
-</p>
+<hr><div><span style="float:right;">Next: <a href="/gday/">I Made a Tool for Transferring Files</a></span>
+</div>
     </main>
 
     <footer id="footer">
@@ -139,9 +132,7 @@ I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kid
         <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
         <a rel="noopener noreferrer" href="https://github.com/manforowicz">GitHub</a>
         <br><br>
-        <small>
             By Marcin Anforowicz (manforowicz at gmail dot com)
-        </small>
     </footer>
 </body>
 

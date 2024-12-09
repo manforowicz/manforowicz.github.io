@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>I Made a Tool for Transferring Files</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Marcin Anforowicz's website">
+    <meta name="keywords" content="blog, computer science, math, programming, competitive programming, Rust">
+    <meta name="author" content="Marcin Anforowicz">
+    <meta property="og:title" content="I Made a Tool for Transferring Files">
+    <meta property="og:description" content="Marcin Anforowicz's website">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/assets/window.jpg">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/prism.css">
+    <link rel="stylesheet" media="print" href="/assets/print.css">
+    <link rel="icon" href="/assets/icon.ico">
+    <link rel="icon" href="/assets/icon.svg">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="/" >HOME</a>
+            <a href="/posts" >POSTS</a>
+        </nav>
+    </header>
+    <main>
+        <h1>I Made a Tool for Transferring Files</h1>
+        
+<div>
+    Posted on
+    <strong><time datetime="2024-12-09T00:00:00.000Z">9 December 2024</time></strong>
+    
+    by Marcin Anforowicz.
+</div>
+
+
+<p>Why is it so tricky to send large files from computer to computer? It's a long story.</p>
+<p>Originally every computer had its own unique IPv4 address.
+But as more and more computers were using the internet, the 2<sup>32</sup> ≈ 4 billion IPv4 addresses were running out.</p>
+<h2>NATs to work around IPv4 exhaustion?</h2>
+<p>So in 1994, <a href="https://datatracker.ietf.org/doc/html/rfc1631">RFC 1631</a> proposed network address translators (NATs) as a temporary workaround.</p>
+<p>Computers inside most buildings connect to the internet through the building's NAT.
+A NAT has 1 real/public IP address, but it
+hands out many fake/private IP addresses to all the computers within that building's private network.</p>
+<p>The NAT translates packets flowing out of the private network by replacing their fake/private IP addresses with its own real/public IP address, and vice versa.</p>
+<p>It also modifies the port numbers of outgoing packets, so that each public port number corresponds to a different computer or connection within its network. Then it looks at the port numbers of incoming packets to determine which internal computer to forward them to.</p>
+<p>Unfortunately, this makes it difficult for two computers, each behind their own NAT, to connect to each other. If one computer tries to send a packet to another computer, the receiving NAT won't know which computer on its internal network to forward it to. So the packet will be dropped.</p>
+<p>Note: this is just a high-level summary. To learn more, read <a href="https://en.wikipedia.org/wiki/Network_address_translation">Wikipedia article on NATs</a>.</p>
+<h2>IPv6 to the rescue?</h2>
+<p>In 1995, <a href="https://datatracker.ietf.org/doc/html/rfc1883">RFC 1883</a> proposed a longer-term solution which doesn't involve fake/private IP addresses.
+I'm talking about IPv6, which has 2<sup>128</sup> = 340,282,366,920,938,463,463,374,607,431,768,211,456 addresses, more than enough for each computer to have its own real/public IP address without any NATs.</p>
+<p>Problem solved, right??? Unfortunately, although IPv6 is becoming more popular, <a href="https://www.google.com/intl/en/ipv6/statistics.html">less than 50% of internet traffic uses IPv6 as of 2024</a>.
+So 29 years have passed, and half of us are still stuck with NATs.</p>
+<br>
+<blockquote>
+"NAT may be a good short term solution to the address depletion and
+scaling problems. This is because it requires very few changes and
+can be installed incrementally. NAT has several negative
+characteristics that make it inappropriate as a long term solution,
+and may make it inappropriate even as a short term solution." - <a href="https://datatracker.ietf.org/doc/html/rfc1631">RFC 1631</a> (1994)
+</blockquote>
+<br>
+<p>In the meantime, we have to use servers which <em>do</em> have a public IP address to relay files between computers behind NAT's.
+Common examples of relay servers are email, Google Drive, <a href="https://github.com/magic-wormhole/magic-wormhole">Magic Wormhole</a> and <a href="https://github.com/schollz/croc">croc</a>.</p>
+<h2>Hole-punching</h2>
+<p>Thankfully, there's a way to trick certain NATs into allowing computers behind them to connect directly to each other.
+It's a procedure called <a href="https://bford.info/pub/net/p2pnat/">TCP hole punching</a> in which both computers temporarily connect to a contact exchange server, which shares their public IP addresses and port numbers with each other.
+Then, both computers try connecting to the address+port they've received.</p>
+<p>However, this only works on full-cone NATs, address-restricted-cone NATs, and port-restricted cone NATs. It doesn't work on symmetric NATs. To understand why, <a href="https://en.wikipedia.org/wiki/Network_address_translation">read about NATs on Wikipedia</a>.</p>
+<h2>Introducing Gday</h2>
+<p>I learned about this while trying to send an SD-card worth of vacation photos and videos directly to my cousin in Poland.</p>
+<p>So I created an open-source command-line tool which uses hole-punching
+to allow computers to securely transfer files without a relay.</p>
+<p>If you'd like to install it or learn more, take a look at the <a href="https://github.com/manforowicz/gday">Gday GitHub</a>.</p>
+<script src="https://asciinema.org/a/692670.js" id="asciicast-692670" async="true"></script>
+
+
+<hr><div><span>Previous: <a href="/flock/">Boids</a></span>
+</div>
+    </main>
+
+    <footer id="footer">
+        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
+        <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
+        <a rel="noopener noreferrer" href="https://github.com/manforowicz">GitHub</a>
+        <br><br>
+            By Marcin Anforowicz (manforowicz at gmail dot com)
+    </footer>
+</body>
+
+</html>
