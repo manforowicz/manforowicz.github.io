@@ -18,9 +18,12 @@ hands out many fake/private IP addresses to all the computers within that buildi
 
 The NAT translates packets flowing out of the private network by replacing their fake/private IP addresses with its own real/public IP address, and vice versa.
 
-It also modifies the port numbers of outgoing packets, so that each public port number corresponds to a different computer or connection within its network. Then it looks at the port numbers of incoming packets to determine which internal computer to forward them to.
+It also dynamically modifies the origin port numbers of outgoing packets, so that each port number corresponds to a different internal computer or connection.
+Then it looks at the port numbers of incoming response packets to determine which internal computer to forward them to.
 
-Unfortunately, this makes it difficult for two computers, each behind their own NAT, to connect to each other. If one computer tries to send a packet to another computer, the receiving NAT won't know which computer on its internal network to forward it to. So the packet will be dropped.
+Unfortunately, this makes it difficult for computers to connect if they're both behind different NATs.
+If one computer tries to send a packet to another computer, the receiving NAT won't know which computer on its internal network to forward it to.
+So it'll drop the packet.
 
 Note: this is just a high-level summary. To learn more, read [Wikipedia article on NATs](https://en.wikipedia.org/wiki/Network_address_translation).
 
@@ -49,7 +52,7 @@ Common examples of relay servers are email, Google Drive, [Magic Wormhole](https
 
 Thankfully, there's a way to trick certain NATs into allowing computers behind them to connect directly to each other.
 It's a procedure called [TCP hole punching](https://bford.info/pub/net/p2pnat/) in which both computers temporarily connect to a contact exchange server, which shares their public IP addresses and port numbers with each other.
-Then, both computers try connecting to the address+port they've received.
+Then, both computers try connecting a few times to the address+port they've received.
 
 However, this only works on full-cone NATs, address-restricted-cone NATs, and port-restricted cone NATs. It doesn't work on symmetric NATs. To understand why, [read about NATs on Wikipedia](https://en.wikipedia.org/wiki/Network_address_translation).
 
