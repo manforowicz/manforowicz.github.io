@@ -1,5 +1,5 @@
 ---
-title: I Made a Tool for Transferring Files
+title: I Made a Program for Transferring Files
 date: 2024-12-09
 ---
 
