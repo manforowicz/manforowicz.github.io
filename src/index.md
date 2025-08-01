@@ -62,7 +62,7 @@ I enjoy exploring creative radio protocols such as [WSPR](https://en.wikipedia.o
 
 I also enjoy building and flying model airplanes:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0HckCmFCpzc?si=24FlGgH9R9AdjkjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen tag="#slow-flyer"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0HckCmFCpzc?si=24FlGgH9R9AdjkjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="slow-flyer"></iframe>
 
 ## University of Washington
 
