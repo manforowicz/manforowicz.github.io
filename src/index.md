@@ -14,7 +14,7 @@ In the summer of 2024, I had the pleasure of working as a software engineering i
 Check out my [LinkedIn post](https://www.linkedin.com/posts/m-anforowicz_today-is-the-final-day-of-my-engineering-activity-7242941893976711169-C97v)
 and watch this video to learn more about my work there.
 
-<video width="960" height="540" controls preload="metadata" style="max-width: 75%;">
+<video width="960" height="540" controls preload="metadata" style="max-width: 75%;" id="wibotic-video">
     <source src="/assets/wibotic_internship_video.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
@@ -63,7 +63,12 @@ I enjoy exploring creative radio protocols such as [WSPR](https://en.wikipedia.o
 
 ## University of Washington
 
-I enjoy making websites for student organizations at the University of Washington. I maintain the websites of [Husky Satellite Lab](https://huskysat.org/team) ([code](https://github.com/UWCubeSat/hsl-website)) and [Competitive Programming Club](https://uw-programming.netlify.app/) ([code](https://github.com/manforowicz/uwcp-site)).
+My interest in the interaction of hardware and software led me to become a teaching assistant for CSE 351 (Hardware/Software Interface). From January 2025 to June 2025, I helped students learn C, Linux, GDB, virtual memory, and caching. I love teaching, as it lets me share my enthusiasm about computing with others!
+
+I'm spending the summer of 2025 working as a research assistant, helping develop a new CS course at UW, that will teach about concurrency.
+In preparation for the course's initial offering in winter 2026, I'm developing auto-graded programming assignments covering asynchronous programming and cache coherence.
+
+I also enjoy making websites for student organizations at the University of Washington. I maintain the websites of [Husky Satellite Lab](https://huskysat.org/team) ([code](https://github.com/UWCubeSat/hsl-website)) and [Competitive Programming Club](https://uw-programming.netlify.app/) ([code](https://github.com/manforowicz/uwcp-site)).
 
 I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here's a video of me flying a DIY airplane our team built:
 
@@ -71,12 +76,16 @@ I also teach others how to build and fly remote-controlled airplanes at the dron
 
 And here's a video of me trying to race an FPV (first-person-view) drone.
 
-<video width="712" height="480" controls preload="metadata" style="max-width: 75%;">
+<video width="712" height="480" controls preload="metadata" style="max-width: 75%;" id="fpv-drone">
     <source src="/assets/whoop2024.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
 Some relevant courses I've taken at the University of Washington include:
+
+- **Distributed Systems** - This course involved implementing Paxos, a fault-tolerant consensus protocol. Paxos is the backbone of services like Google and AWS, allowing them to reliably operate, even if multiple servers fail.
+
+- **Fundementals of Electrical Engineering** - In this course, I learned how to analytically design and test electrical circuits. 
 
 - **Foundations of Computing** - Here I learned the theoretical math underlying various aspects of computer science.
 
