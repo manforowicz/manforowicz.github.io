@@ -60,6 +60,9 @@ I [programmed the animations](https://github.com/manforowicz/Manim-Videos) for t
 I'm a certified amateur radio operator since 2019 (callsign: KJ7JCN).
 I enjoy exploring creative radio protocols such as [WSPR](https://en.wikipedia.org/wiki/WSPR_(amateur_radio_software)), [IRLP](https://en.wikipedia.org/wiki/Internet_Radio_Linking_Project), and [APRS](https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System).
 
+I also enjoy building and flying model airplanes:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0HckCmFCpzc?si=24FlGgH9R9AdjkjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## University of Washington
 
