@@ -75,7 +75,7 @@ I also enjoy making websites for student organizations at the University of Wash
 
 I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here's a video of me flying a DIY airplane our team built:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MtJTZ6KJV2U?si=ujwtz4EUnSX33SSN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MtJTZ6KJV2U?si=ujwtz4EUnSX33SSN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="plane-chase"></iframe>
 
 And here's a video of me trying to race an FPV (first-person-view) drone.
 
