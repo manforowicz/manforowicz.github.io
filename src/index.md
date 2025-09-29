@@ -3,7 +3,7 @@ title: Marcin's Website
 ---
 
 Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and engineering.
-Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/resume.pdf" target="_blank">resume</a>
+Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
 or visit my <a href="https://github.com/manforowicz">GitHub</a> to learn more!
 
 {% image "/assets/window.jpg", "Marcin looking through a window.", 50 %}
