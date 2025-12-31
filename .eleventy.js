@@ -47,7 +47,7 @@ module.exports = function (eleventyConfig) {
       outputDir: "public/img/",
       filenameFormat: (id, src, width, format) => {
         const imgName = path.parse(src).name;
-        `${imgName}-${width}.${format}`
+        return `${imgName}-${width}.${format}`
       }
     });
 

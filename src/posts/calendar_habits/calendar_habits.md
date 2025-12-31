@@ -1,6 +1,6 @@
 ---
 title: A way to build habits
-date: 2026-12-31
+date: 2026-01-01
 ---
 
 As 2025 was starting, I decided to exercise more.

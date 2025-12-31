@@ -100,7 +100,7 @@ To do this, you can tell the company to brag about rising profits.
 You can also convince investors that dividend and buyback levels are sustainable in the long term.
 
 
-# Summary
+## Summary
 
 The majority shareholders can force the board to spend profits on dividends and buybacks, which are mechanisms of giving money to shareholders.
 The higher the profits, the more can be spent on future dividends or buybacks.
