@@ -8,15 +8,15 @@
     <meta name="description" content="Marcin Anforowicz's website">
     <meta name="keywords" content="blog, computer science, math, programming, competitive programming, Rust">
     <meta name="author" content="Marcin Anforowicz">
-    <meta property="og:title" content="Boids">
-    <meta property="og:description" content="Marcin Anforowicz's website">
-    <meta property="og:type" content="article">
-    <meta property="og:image" content="/assets/window.jpg">
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="/assets/prism.css">
     <link rel="stylesheet" media="print" href="/assets/print.css">
     <link rel="icon" href="/assets/icon.ico">
     <link rel="icon" href="/assets/icon.svg">
+    <meta property="og:title" content="Boids">
+    <meta property="og:description" content="Marcin Anforowicz's website">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/assets/marcin_mountain_2025.jpg">
 </head>
 
 <body>
@@ -100,7 +100,7 @@ We even create <a href=".">computer simulations</a> to mimic the emergent behavi
 Thankfully, a data structure called the <a href="https://en.wikipedia.org/wiki/K-d_tree">KD-tree</a> sorts boids in a way that lowers time complexity to <code>O(n log(n))</code>.
 I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kiddo</a> library.</p>
 <p><a href="/assets/kd-tree.png" target="_blank" rel="noopener">
-<img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/4QQSyexX2X-400.jpeg" width="1200" height="589" srcset="/img/4QQSyexX2X-400.jpeg 400w, /img/4QQSyexX2X-800.jpeg 800w, /img/4QQSyexX2X-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+<img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/kd-tree-400.jpeg" width="1200" height="589" srcset="/img/kd-tree-400.jpeg 400w, /img/kd-tree-800.jpeg 800w, /img/kd-tree-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
 <p>I wrote the actual simulation and rendering with the Rust <a href="https://docs.rs/macroquad/latest/macroquad/">Macroquad</a> library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on <a href="https://github.com/manforowicz/boids">GitHub</a>.</p>
 <h2>APCSA Project Write-Up</h2>
