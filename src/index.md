@@ -6,7 +6,7 @@ Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, cr
 Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
 or visit my <a href="https://github.com/manforowicz">GitHub</a> to learn more!
 
-{% image "/assets/window.jpg", "Marcin looking through a window.", 50 %}
+{% image "marcin_mountain_2025.jpg", "Marcin on a mountain.", 50 %}
 
 ## Industry Experience
 
@@ -28,16 +28,16 @@ Here are a few that I'm particularly proud of:
     <p>As an engineering intern at <a href="https://www.wibotic.com/">WiBotic</a>, I designed a stackable circuit board to hold charger modules on a shared CAN bus. It's used for running automated CAN bus tests.
     I also wrote over 3000 lines of <a href="https://github.com/wibotic/socketcand_translate">ESP32 firmware</a>
     to allow remotely connecting to the CAN bus via internet.</p>
-    {% image "/assets/can_test_pcb.jpg", "Circuit board", 100 %}
+    {% image "can_test_pcb.jpg", "Circuit board", 100 %}
 </div>
 <div class="horizontal-container">
-    {% image "/assets/can_test_pcb_regulator.jpg", "Circuit board", 100 %}
+    {% image "can_test_pcb_regulator.jpg", "Circuit board", 100 %}
     <p>To supply 3.3 volts to all the charger modules on my PCB, I designed and soldered a simple integrated buck converter.</p>
 </div>
 <div class="horizontal-container">
     <p>As a member of <a href="https://huskysat.org/">Husky Satellite Lab</a>
     I used <a href="https://www.kicad.org/">KiCad</a> to design circuit boards that will fly on HuskySat-2. Here's a photograph of a radio I designed, based heavily on <a href="https://github.com/OpenLST/openlst">OpenLST</a>.</p>
-    {% image "/assets/circuit.jpg", "Circuit board", 100 %}
+    {% image "circuit.jpg", "Circuit board", 100 %}
 </div>
 
 At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of a conventional wire-wound coil, it uses an integrated PCB spiral. Here's a video I made about it:

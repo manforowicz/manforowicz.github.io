@@ -74,7 +74,7 @@ Having every boid measure distance with all other boids to find its closest neig
 Thankfully, a data structure called the [KD-tree](https://en.wikipedia.org/wiki/K-d_tree) sorts boids in a way that lowers time complexity to `O(n log(n))`.
 I used a KD-tree from the Rust [kiddo](https://docs.rs/kiddo/latest/kiddo/) library.
 
-{% image "/assets/kd-tree.png", "An image of a KD-Tree" %}
+{% image "kd-tree.png", "An image of a KD-Tree" %}
 
 I wrote the actual simulation and rendering with the Rust [Macroquad](https://docs.rs/macroquad/latest/macroquad/) library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on [GitHub](https://github.com/manforowicz/boids).
 

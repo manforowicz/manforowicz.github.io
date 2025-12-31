@@ -29,12 +29,26 @@ module.exports = function (eleventyConfig) {
 
   // Image shortcode
   eleventyConfig.addShortcode("image", async function (src, alt, width = 90) {
-    let metadata = await Image(`${path.dirname(this.page.inputPath)}/${src}`, {
-      widths: [400, 800, 1200, "auto"],
+    if (!alt) {
+      throw new Error(`Missing alt text for image: ${src}`);
+    }
+
+    // Directory containing the page
+    const inputDir = path.dirname(this.page.inputPath);
+    // Input path of the image
+    const inputPath = path.join(inputDir, "assets", src);
+    // URL to original image (relies on assets passthrough copy above)
+    const originalUrl = `/assets/${src}`;
+
+    let metadata = await Image(inputPath, {
+      widths: [400, 800, 1200],
       formats: ["jpg"],
       urlPath: "/img/",
       outputDir: "public/img/",
-      filenameFormat: (id, src, width, format, options) => `${src.split("/").pop().split(".")[0]}-${width}.${format}`
+      filenameFormat: (id, src, width, format) => {
+        const imgName = path.parse(src).name;
+        `${imgName}-${width}.${format}`
+      }
     });
 
     let imageAttributes = {
@@ -45,7 +59,11 @@ module.exports = function (eleventyConfig) {
       decoding: "async",
     };
 
-    return `<a href="${src}">${Image.generateHTML(metadata, imageAttributes)}</a>`;
+    return `
+      <a href="${originalUrl}" target="_blank" rel="noopener">
+        ${Image.generateHTML(metadata, imageAttributes)}
+      </a>
+    `;
   });
 
   return {

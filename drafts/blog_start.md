@@ -1,5 +1,5 @@
 ---
-title: Starting a Blog
+title: Starting a blog
 date: 2024-02-06
 modified: 2024-12-09
 ---
