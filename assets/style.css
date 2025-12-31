@@ -16,7 +16,7 @@ body {
     font-family: FiraSans, sans-serif;
     background-color: #1e1e1e;
     color: white;
-    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 main {

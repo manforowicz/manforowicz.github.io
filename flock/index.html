@@ -99,7 +99,9 @@ We even create <a href=".">computer simulations</a> to mimic the emergent behavi
 <p>Having every boid measure distance with all other boids to find its closest neighbors would require an <code>O(n<sup>2</sup>)</code> quadratic time complexity.
 Thankfully, a data structure called the <a href="https://en.wikipedia.org/wiki/K-d_tree">KD-tree</a> sorts boids in a way that lowers time complexity to <code>O(n log(n))</code>.
 I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kiddo</a> library.</p>
-<p><a href="/assets/kd-tree.png"><img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/kd-tree-400.jpeg" width="1593" height="782" srcset="/img/kd-tree-400.jpeg 400w, /img/kd-tree-800.jpeg 800w, /img/kd-tree-1200.jpeg 1200w, /img/kd-tree-1593.jpeg 1593w" sizes="(max-width: 50rem) 100vw, 50rem"></a></p>
+<p><a href="/assets/kd-tree.png" target="_blank" rel="noopener">
+<img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/4QQSyexX2X-400.jpeg" width="1200" height="589" srcset="/img/4QQSyexX2X-400.jpeg 400w, /img/4QQSyexX2X-800.jpeg 800w, /img/4QQSyexX2X-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+</a></p>
 <p>I wrote the actual simulation and rendering with the Rust <a href="https://docs.rs/macroquad/latest/macroquad/">Macroquad</a> library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on <a href="https://github.com/manforowicz/boids">GitHub</a>.</p>
 <h2>APCSA Project Write-Up</h2>
 <p>Here's what I wrote when I made this project for my 10th grade computer science class:</p>
@@ -123,6 +125,7 @@ I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kid
     load("/assets/flocking_sim.wasm");
 </script>
 
+<br>
 <hr><div><span style="float:right;">Next: <a href="/gday/">I Made a Program for Transferring Files</a></span>
 </div>
     </main>
