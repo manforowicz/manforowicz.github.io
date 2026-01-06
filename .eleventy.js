@@ -5,10 +5,13 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 // Compresses image plugin
 const Image = require("@11ty/eleventy-img");
 
+// Render Latex equations
+const markdownIt = require("markdown-it");
+
 // Node JS path functions
 const path = require('path');
 
-module.exports = function (eleventyConfig) {
+module.exports = async function (eleventyConfig) {
   // All folders called "assets" will be blindly copied
   // into the assets output folder.
   eleventyConfig.addPassthroughCopy({ "src/**/assets/*": "assets/" });
@@ -25,6 +28,18 @@ module.exports = function (eleventyConfig) {
     return dateObj.toISOString();
   });
 
+
+  const { katex } = (await import("@mdit/plugin-katex"));
+  eleventyConfig.setLibrary(
+    "md",
+    markdownIt({
+      html: true,
+      breaks: false,
+      linkify: true,
+    }).use(katex, { output: "mathml" })
+  );
+
+  // Code syntax highlighting
   eleventyConfig.addPlugin(syntaxHighlight);
 
   // Image shortcode
@@ -42,9 +57,10 @@ module.exports = function (eleventyConfig) {
 
     let metadata = await Image(inputPath, {
       widths: [400, 800, 1200],
-      formats: ["jpg"],
+      formats: ["jpg", "svg"],
       urlPath: "/img/",
       outputDir: "public/img/",
+      svgShortCircuit: true, // don't rasterize SVG
       filenameFormat: (id, src, width, format) => {
         const imgName = path.parse(src).name;
         return `${imgName}-${width}.${format}`

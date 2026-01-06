@@ -3,7 +3,7 @@ title: Why does company performance influence stock price?
 date: 2025-12-31
 ---
 
-As someone with no education in finance, I've been trying to find an answer to this question: why does a company's stock price rise when the company makes profits?
+As someone with no education in finance, I've been trying to find an answer to this question: why does a company's stock price rise when its profits rise?
 
 I think I finally acquired a good understanding.
 But first, let's look at some answers I've found unsatisfying.
@@ -42,7 +42,7 @@ The first question we should ask is what do shares have that pieces of paper don
 - **Dividends**. Dividends are payments made by a company to its shareholders.
 If a company decides on a dividend of $10 and you hold 15 shares, the company will pay you $150 a year. 
 
-- **Share buybacks**. That's when a company decides to buy its own shares back from the open market, making them essentially disappear.
+- **Share buybacks**. That's when a company decides to buy its own shares back from the open market, making them disappear.
 
 - **IPOs (initial public offerings)**. That's when a company decides to create new shares out of thin air and sell them.
 
@@ -58,38 +58,63 @@ As a greedy human, how can you use this to make money?
 Well, you have 51% of the vote, so you can control the board of directors by electing members that will do what you want.
 
 You could tell the board to make the company give you a salary.
-But high salaries are heavily taxed and regulated.
+But it's usually illegal for the board to give you more favorable treatment
+than other shareholders.
+Additionally, high salaries are heavily taxed.
 
-You can instead tell the board to make the company spend revenue on dividends, which aren't taxed as heavily.
+Instead, you tell the company to spend its income on dividends.
 Since you own 51% of the shares, you'll get 51% of the dividends.
 
-A method that's taxed even less is share buybacks. When the company buys its shares, that reduces supply, causing their price to rise. This increases how much money you'll get when you finally decide to sell your shares.
+Equivalently, you can make the company spend its income on buybacks.
+These reduce the number of shares, meaning your shares become a greater fraction of the total.
+You can sell some shares to lower your fraction to its previous value.
+This gets you money, which is the same end result as dividends.
+Confusingly, buybacks are sometimes taxed even less than dividends.
 
-You can also tell the board to hire executives that are obsessed with increasing profits to maximize how much can be spent on dividends and buybacks.
-
-
-## Minority shareholder incentives
-
-If you own 1% of a company's shares, you get 1% of the benefit of dividends and buybacks.
-In a way, 1% of the majority shareholder's earnings are leaking to you.
-
-To maximize your earnings, you try to buy shares from companies that are likely to do sustainable dividends or buybacks.
-The more profit the company generates, the more it can spend on dividends or buybacks.
-So people try to buy shares from profitable companies.
-That is why share price rises when a company makes a profit.
+Lastly, you are incentivized to make the board hire executives who will maximize profits so that more can be spent on dividends and buybacks.
 
 
 ## What about companies without dividends or buybacks?
 
-As of 2025, some profitable companies like Amazon have never paid a dividend, and didn't do significant buybacks. So why do people still hold their shares?
+As of 2025, some rapidly growing companies like Amazon haven't done any significant dividends or buybacks. Why?
 
-Well, imagine again you're a majority shareholder. You can tell the board to not give dividends or buybacks, and instead reinvest profits into expanding business.
-This increases future profits, allowing even larger future dividends or buybacks.
-So the mere expectation of future dividends and buybacks is enough to attract investors, raising share price.
+{% image "amazon_shareholder_returns.svg", "A graph of Amazon shareholder returns.", 70 %}
 
-On the other hand, let's say you tell the board to direct all revenue towards unsustainable dividends or buybacks.
-This will prevent the company from expanding, and other companies will outcompete it.
-This is why investors are weary of companies that have an unsustainable level of dividends or buybacks.
+Well, imagine again you're a majority shareholder.
+If you believe the company can grow, you tell the board to direct all income towards expansion.
+This increases future income, allowing even larger future dividends or buybacks.
+
+Once the company can't grow any further, you tell the board to direct income towards dividends and buybacks.
+
+Indeed, most companies eventually spend most of their net earnings on dividends and buybacks. According to [this data sheet](https://www.spglobal.com/spdji/en/documents/additional-material/sp-500-buyback.xlsx), in the 2018-2024 period, companies in the S&P 500 made a total of \$9,572.48 billion net income and spent \$9,315.65 billion of that on dividends and buybacks. It seems 97.32% of net income was spent on dividends and buybacks.
+
+TODO: Graph of the average S&P 500 company?
+
+However, unsustainably high dividends and buybacks will eventually bankrupt the company.
+
+
+## Minority shareholder incentives
+
+Majority shareholders use their control of the company to earn money through dividends and buybacks. But to their annoyance, these leak some money to minority shareholders.
+If you own 1% of a company's shares, you get 1% of the benefit of dividends and buybacks.
+
+Investors try to buy shares from companies with high earnings that can afford to eventually pay dividends and buybacks.
+That's what causes share price to rise when a company's earnings rise.
+
+Value investors like companies that have high earnings per share relative to how much shares cost. This is measured by "earnings yield":
+
+$$
+\text{Earnings yield}=\frac{\text{Earnings per Share}}{\text{Share price}}
+$$
+
+This is kind of like the expected interest rate of the share. Most TODO (stable PE ratio at 15ish)
+
+## TODO TODO
+
+TODO: Talk about "interest rate" and why company bonds are mediocre.
+
+
+
 
 
 ## Influencing public beliefs

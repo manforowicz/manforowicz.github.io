@@ -8,13 +8,12 @@
     "build:prod": "ELEVENTY_ENV=production eleventy"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
-  },
+  "author": "Marcin Anforowicz",
+  "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy-img": "^4.0.2"
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@mdit/plugin-katex": "^0.24.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2"
   }
 }

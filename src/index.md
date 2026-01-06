@@ -45,7 +45,7 @@ At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of
 
 ## Personal Projects
 
-Did you know I'm an avid [rustacean](https://doc.rust-lang.org/book/)? 🦀 I created a file transfer tool called [Gday](https://github.com/manforowicz/gday), and wrote a [blog post](/gday/) about it.
+I enjoy programming in [Rust](https://doc.rust-lang.org/book/)? I created a file transfer tool called [Gday](https://github.com/manforowicz/gday), and wrote a [blog post](/gday/) about it.
 
 <script src="https://asciinema.org/a/692670.js" id="asciicast-692670" async="true"></script>
 
@@ -68,8 +68,7 @@ I also enjoy building and flying model airplanes:
 
 My interest in the interaction of hardware and software led me to become a teaching assistant for CSE 351 (Hardware/Software Interface). From January 2025 to June 2025, I helped students learn C, Linux, GDB, virtual memory, and caching. I love teaching, as it lets me share my enthusiasm about computing with others!
 
-I'm spending the summer of 2025 working as a research assistant, helping develop a new CS course at UW, that will teach about concurrency.
-In preparation for the course's initial offering in winter 2026, I'm developing auto-graded programming assignments covering asynchronous programming and cache coherence.
+I spent the summer of 2025 working as a research assistant, helping develop a new CS course at UW about concurrency. I'll be TA'ing for it this winter 2026 quarter. that will teach about concurrency.
 
 I also enjoy making websites for student organizations at the University of Washington. I maintain the websites of [Husky Satellite Lab](https://huskysat.org/team) ([code](https://github.com/UWCubeSat/hsl-website)) and [Competitive Programming Club](https://uw-programming.netlify.app/) ([code](https://github.com/manforowicz/uwcp-site)).
 
