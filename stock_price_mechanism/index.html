@@ -13,6 +13,7 @@
     <link rel="stylesheet" media="print" href="/assets/print.css">
     <link rel="icon" href="/assets/icon.ico">
     <link rel="icon" href="/assets/icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <meta property="og:title" content="Why does company performance influence stock price?">
     <meta property="og:description" content="Marcin Anforowicz's website">
     <meta property="og:type" content="article">
@@ -33,11 +34,15 @@
     Posted on
     <strong><time datetime="2025-12-31T00:00:00.000Z">31 December 2025</time></strong>
     
+    and modified
+    <strong><time datetime="2026-01-07T00:00:00.000Z">
+            7 January 2026
+        </time></strong>
     by Marcin Anforowicz.
 </div>
 
 
-<p>As someone with no education in finance, I've been trying to find an answer to this question: why does a company's stock price rise when the company makes profits?</p>
+<p>As someone with no education in finance, I've been trying to find an answer to this question: why does a company's stock price rise when its profits rise?</p>
 <p>I think I finally acquired a good understanding.
 But first, let's look at some answers I've found unsatisfying.</p>
 <h2>Unsatisfying answers</h2>
@@ -52,27 +57,27 @@ But a share just feels like a piece of paper with the company's logo on it. How 
 Why should its profits affect the value of my piece of paper?</p>
 <p>Another unsatisfying answer goes something like this:</p>
 <blockquote>
-<p>Pieces of paper, like Dogecoin, can have a price.
+<p>Independent &quot;pieces of paper&quot;, like Dogecoin, can have a price.
 When people believe its price will rise, they buy, hoping to sell later.
 But the wave of people buying <em>is</em> what makes the price rise (by increasing demand and reducing supply).</p>
 <p>This self-fulfilling prophecy is one mechanism that links share price to company performance.
 The company does well, so people believe its share price will rise, due to past experience. Therefore, they all buy it, which causes the price to actually rise, reinforcing their belief.</p>
 </blockquote>
-<p>Sure, I can see self-fulfilling prophecies influcencing a share's price, but I doubt that's the only mechanism at play.</p>
+<p>Sure, I can see self-fulfilling prophecies influencing a share's price, but I doubt that's the only mechanism at play.</p>
 <p>Why are company executives so obsessed about their company's shares, rather than shares of other companies?
-Why don't any companies go about their business, completely ignoring the existence of their shares?</p>
+Why don't companies go about their business, completely ignoring the existence of their shares?</p>
 <h2>What makes shares more than pieces of paper</h2>
 <p>The first question we should ask is what do shares have that pieces of paper don't? These things:</p>
 <ul>
 <li>
 <p><strong>Dividends</strong>. Dividends are payments made by a company to its shareholders.
-If a company decides on a dividend of $10 and you hold 15 shares, the company will pay you $150 a year.</p>
+For example, it could pay $10 per share per year.</p>
 </li>
 <li>
-<p><strong>Share buybacks</strong>. That's when a company decides to buy its own shares back from the open market, making them essentially disappear.</p>
+<p><strong>Share buybacks</strong>. That's when a company decides to buy its own shares back from the open market, making them disappear. This exerts upward pressure on share price by increasing demand and reducing supply.</p>
 </li>
 <li>
-<p><strong>IPOs (initial public offerings)</strong>. That's when a company decides to create new shares out of thin air and sell them.</p>
+<p><strong>IPOs (initial public offerings)</strong>. That's when a company decides to create new shares out of thin air and sell them. It's the opposite of buybacks.</p>
 </li>
 <li>
 <p><strong>Voting rights</strong>. For each share you own, you get one vote on shareholder matters. Notably, you can elect board members. Board members are the people who control when the company does dividends, share buybacks, and IPOs. Board members also hire executives to run the company.</p>
@@ -80,41 +85,69 @@ If a company decides on a dividend of $10 and you hold 15 shares, the company wi
 </ul>
 <p>So how do these things affect share price?</p>
 <h2>Majority shareholder incentives</h2>
-<p>Imagine you own 51% of a company's shares.
-As a greedy human, how can you use this to make money?
+<p>Imagine you and your friends combined own 51% of a company's shares.
+As greedy humans, how can you use this to make money?
 Well, you have 51% of the vote, so you can control the board of directors by electing members that will do what you want.</p>
 <p>You could tell the board to make the company give you a salary.
-But high salaries are heavily taxed and regulated.</p>
-<p>You can instead tell the board to make the company spend revenue on dividends, which aren't taxed as heavily.
-Since you own 51% of the shares, you'll get 51% of the dividends.</p>
-<p>A method that's taxed even less is share buybacks. When the company buys its shares, that reduces supply, causing their price to rise. This increases how much money you'll get when you finally decide to sell your shares.</p>
-<p>You can also tell the board to hire executives that are obsessed with increasing profits to maximize how much can be spent on dividends and buybacks.</p>
+But it's illegal for the board to give you more favorable treatment
+than other shareholders.</p>
+<p>Instead, you tell the company to spend its income on dividends.
+Since you own 51% of the shares, you'll get 51% of the dividends.
+If you want, you can spend dividends on buying more shares.</p>
+<p>Equivalently, you can make the company spend its income on buybacks.
+These reduce the number of shares causing
+your shares to become a greater fraction of the total.
+If you want, you can sell some shares to lower your fraction to its previous value.
+This gets you money, which is the same end result as dividends.
+Confusingly, buybacks are sometimes taxed less than dividends.</p>
+<p>Lastly, you are incentivized to make the board hire executives who will maximize profits so that more can be spent on dividends and buybacks.</p>
 <h2>Minority shareholder incentives</h2>
-<p>If you own 1% of a company's shares, you get 1% of the benefit of dividends and buybacks.
-In a way, 1% of the majority shareholder's earnings are leaking to you.</p>
-<p>To maximize your earnings, you try to buy shares from companies that are likely to do sustainable dividends or buybacks.
-The more profit the company generates, the more it can spend on dividends or buybacks.
-So people try to buy shares from profitable companies.
-That is why share price rises when a company makes a profit.</p>
+<p>Majority shareholders use their control of the company to earn money through dividends and buybacks. But to their annoyance, these leak some money to minority shareholders.
+If you own 1% of a company's shares, you get 1% of the benefit of dividends and buybacks.</p>
+<p>Companies with high expected future profits can spend more on dividends and buybacks.
+So you buy shares from these companies, causing their price to rise.</p>
+<p>Even if you don't hold long enough to receive dividends and buybacks,
+you can sell to anyone else looking forward to them.
+So the mere expectation of dividends and buybacks is enough to raise share prices.</p>
+<p>Bubbles are when investors overestimate future profits, causing share price to rise,
+causing people to falsely believe it will continue rising.</p>
 <h2>What about companies without dividends or buybacks?</h2>
-<p>As of 2025, some profitable companies like Amazon have never paid a dividend, and didn't do significant buybacks. So why do people still hold their shares?</p>
-<p>Well, imagine again you're a majority shareholder. You can tell the board to not give dividends or buybacks, and instead reinvest profits into expanding business.
-This increases future profits, allowing even larger future dividends or buybacks.
-So the mere expectation of future dividends and buybacks is enough to attract investors, raising share price.</p>
-<p>On the other hand, let's say you tell the board to direct all revenue towards unsustainable dividends or buybacks.
-This will prevent the company from expanding, and other companies will outcompete it.
-This is why investors are weary of companies that have an unsustainable level of dividends or buybacks.</p>
-<h2>Influencing public beliefs</h2>
-<p>As a majority shareholder, in addition to dividends and buybacks, you have another mechanism to make money:
-convincing people to buy your company's shares, which raises their price.
-To do this, you can tell the company to brag about rising profits.
-You can also convince investors that dividend and buyback levels are sustainable in the long term.</p>
+<p>As of 2025, a few rapidly growing companies like Amazon haven't paid significant dividends or buybacks:</p>
+<p><a href="/assets/amazon_shareholder_returns.svg" target="_blank" rel="noopener">
+<img src="/img/amazon_shareholder_returns-360.svg" alt="A graph of Amazon shareholder returns." style="width: 70%;" loading="lazy" decoding="async" width="360" height="288">
+</a></p>
+<p>Why? Well, imagine again you're a majority shareholder.
+If you believe the company can grow, you can tell the board to direct all income towards expansion.
+You can even sell new shares through an IPO to raise more money for expansion.
+Growth increases future income, allowing larger future dividends and buybacks.
+In the meantime, share price rises as investors buy in anticipation of these dividends and buybacks.</p>
+<p>For example, Apple Inc only ramped up dividends and buybacks when it surpassed $20 billion in yearly profits:</p>
+<p><a href="/assets/apple_shareholder_returns.svg" target="_blank" rel="noopener">
+<img src="/img/apple_shareholder_returns-360.svg" alt="A graph of Apple shareholder returns." style="width: 70%;" loading="lazy" decoding="async" width="360" height="288">
+</a></p>
+<p>Most companies eventually spend almost all of their net income on dividends and buybacks. According to <a href="https://www.spglobal.com/spdji/en/documents/additional-material/sp-500-buyback.xlsx">this data</a>, in the 2018-2024 period, companies in the S&amp;P 500 reported a total of $9,572 billion earnings and spent $9,316 billion of that on dividends and buybacks. So around 97% of net income was spent on dividends and buybacks.</p>
+<p>Dividends and buybacks much higher than that would deprive the company of money it needs to operate, causing it to shrink.</p>
+<p>(By the way, I made these graphs with SEC data I downloaded using a <a href="https://github.com/manforowicz/sec_company_facts/">Python library I made</a>.)</p>
+<h2>Relationship to interest rates</h2>
+<p>When you put money in a bank, you get interest payments.
+When you put money in shares, you get dividends and buybacks from profits.</p>
+<p><em>Earnings yield</em> is a bit like the &quot;interest rate&quot; of a share:</p>
+<p class='katex-block'><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Earnings yield</mtext><mo>=</mo><mfrac><mtext>Earnings per Share</mtext><mtext>Share price</mtext></mfrac><mo>=</mo><mfrac><mn>1</mn><mtext>P/E Ratio</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{Earnings yield} = \frac{\text{Earnings per Share}}{\text{Share price}} = \frac{1}{\text{P/E Ratio}}
+</annotation></semantics></math></span></p>
+<p>Unlike interest, earnings yield is just a rough indicator.
+A company can spend earnings on dividends, buybacks, or growth,
+and there's no guarantee of future profits.</p>
+<p>The recent S&amp;P 500 P/E ratio of around 20 corresponds to an earnings yield of 5%.
+Actual S&amp;P 500 gains have been higher due to profit growth of the largest 500 companies.</p>
+<p>When interest rates rise, people earn more from money in bank accounts.
+This causes people to move money from shares to banks.
+This lowers share price, causing share earnings yield to rise.
+This mechanism makes earnings yields somewhat correlate to interest rates.</p>
 <h2>Summary</h2>
-<p>The majority shareholders can force the board to spend profits on dividends and buybacks, which are mechanisms of giving money to shareholders.
+<p>Majority shareholders can make the board spend profits on dividends and buybacks,
+which are mechanisms of giving money to shareholders.
 The higher the profits, the more can be spent on future dividends or buybacks.
-This causes people to buy shares when they see profits rise, which drives up their price.
-However, if dividend or buyback levels are unsustainable, investors will be weary to buy shares.
-In addition price is also affected by social phenomena like self-fulfilling prophecies.</p>
+This causes people to buy shares when they see profits rise, which drives up their price.</p>
 
 
 <br>

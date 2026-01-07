@@ -13,6 +13,7 @@
     <link rel="stylesheet" media="print" href="/assets/print.css">
     <link rel="icon" href="/assets/icon.ico">
     <link rel="icon" href="/assets/icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <meta property="og:title" content="Boids">
     <meta property="og:description" content="Marcin Anforowicz's website">
     <meta property="og:type" content="article">
@@ -100,7 +101,7 @@ We even create <a href=".">computer simulations</a> to mimic the emergent behavi
 Thankfully, a data structure called the <a href="https://en.wikipedia.org/wiki/K-d_tree">KD-tree</a> sorts boids in a way that lowers time complexity to <code>O(n log(n))</code>.
 I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kiddo</a> library.</p>
 <p><a href="/assets/kd-tree.png" target="_blank" rel="noopener">
-<img alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" src="/img/kd-tree-400.jpeg" width="1200" height="589" srcset="/img/kd-tree-400.jpeg 400w, /img/kd-tree-800.jpeg 800w, /img/kd-tree-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+<img src="/img/kd-tree-400.jpeg" alt="An image of a KD-Tree" style="width: 90%;" loading="lazy" decoding="async" width="1200" height="589" srcset="/img/kd-tree-400.jpeg 400w, /img/kd-tree-800.jpeg 800w, /img/kd-tree-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
 <p>I wrote the actual simulation and rendering with the Rust <a href="https://docs.rs/macroquad/latest/macroquad/">Macroquad</a> library. I compiled everything to web assembly (WASM) so it can be efficiently run online. View the code I wrote on <a href="https://github.com/manforowicz/boids">GitHub</a>.</p>
 <h2>APCSA Project Write-Up</h2>
@@ -112,7 +113,7 @@ I used a KD-tree from the Rust <a href="https://docs.rs/kiddo/latest/kiddo/">kid
 <p>Also, I ran into an interesting problem with the Rust borrow checker. I had a nested loop where each boid in a mutable vector compares itself to all other boids in the vector, and mutably updates itself. This threw a compile error, because having more than one reference when mutating an object is illegal. The borrow-checker did this to prevent possible data races and other hard-to-debug memory issues.</p>
 <p>After I got everything working, I realized I can improve on the nested O(n<sup>2</sup>) time complexity. I created a system where each boid can only sense boids within a radius of itself. Then I divided the canvas into square tiles as wide as the sensing radius. The tiles were stored in a HashMap, indexed by tuples of their x and y coordinates. Each boid only had to check for neighbors in the 9 tiles closest to itself. When too many neighbors were detected, a random subset of them was retrieved to improve performance.</p>
 <p>Instead of retrieving a random subset, I wanted to try always retrieving the 6 closest boids, regardless of radius. (6 because boids tend to cluster in hexagonal patterns) To accomplish this, I used a pre-implemented unbalanced KD-tree from the Rust Kiddo crate. For an unknown reason, the performance increase over the naïve approach was not as high as I expected. Maybe that had to do with the KD-tree not being balanced. I tried implementing my own KD-tree but put that sub-project on hold to work on other parts.</p>
-<p>Then I learned how to compile Rust to web assembly (.wasm), and load it into an html canvas element using an imported JavaScript file. Everything was surprisingly seamless, and the performance was incredible. I then created a page on github.io and pushed my code into the repository using git. To make the website look better, I coded a side navigation bar, CSS styling, and a text explanation. Finally, I tuned the setting sliders to make the default behavior satisfying to watch.</p>
+<p>Then I learned how to compile Rust to web assembly (.wasm), and load it into an html canvas element using an imported JavaScript file. Everything was surprisingly seamless, and the performance was incredible. I then created a page on <a href="http://github.io">github.io</a> and pushed my code into the repository using git. To make the website look better, I coded a side navigation bar, CSS styling, and a text explanation. Finally, I tuned the setting sliders to make the default behavior satisfying to watch.</p>
 <p>This project taught me best-practices regarding using git and Github version control. I learned the intricacies of the Rust language, and its memory management model. I discovered a lot about flock behavior and emergence. I also used CSS, WASM, and HTML for the first time in my life.</p>
 <p>This project was made in VSCode on MX Linux.</p>
 <p>By Marcin Anforowicz</p>

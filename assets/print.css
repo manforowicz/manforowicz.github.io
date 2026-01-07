@@ -1,18 +1,19 @@
-@media print  {
+@media print {
     body {
         background: white;
         color: black;
     }
-    
+
     main {
         width: 100%;
     }
 
-    main::after {
-        content: "By Marcin Anforowicz";
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
     }
 
-    #navbar, #footer {
+    #navbar,
+    #footer {
         display: none;
     }
 }

@@ -13,6 +13,7 @@
     <link rel="stylesheet" media="print" href="/assets/print.css">
     <link rel="icon" href="/assets/icon.ico">
     <link rel="icon" href="/assets/icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <meta property="og:title" content="Marcin's Website">
     <meta property="og:description" content="Marcin Anforowicz's website">
     <meta property="og:type" content="article">
@@ -32,7 +33,7 @@
 Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
 or visit my <a href="https://github.com/manforowicz">GitHub</a> to learn more!</p>
 <p><a href="/assets/marcin_mountain_2025.jpg" target="_blank" rel="noopener">
-<img alt="Marcin on a mountain." style="width: 50%;" loading="lazy" decoding="async" src="/img/marcin_mountain_2025-400.jpeg" width="1200" height="901" srcset="/img/marcin_mountain_2025-400.jpeg 400w, /img/marcin_mountain_2025-800.jpeg 800w, /img/marcin_mountain_2025-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+<img src="/img/marcin_mountain_2025-400.jpeg" alt="Marcin on a mountain." style="width: 50%;" loading="lazy" decoding="async" width="1200" height="901" srcset="/img/marcin_mountain_2025-400.jpeg 400w, /img/marcin_mountain_2025-800.jpeg 800w, /img/marcin_mountain_2025-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
 <h2>Industry Experience</h2>
 <p>In the summer of 2024, I had the pleasure of working as a software engineering intern at <a href="https://www.wibotic.com/">WiBotic</a>.
@@ -50,12 +51,12 @@ Here are a few that I'm particularly proud of:</p>
     I also wrote over 3000 lines of <a href="https://github.com/wibotic/socketcand_translate">ESP32 firmware</a>
     to allow remotely connecting to the CAN bus via internet.</p>
 <p><a href="/assets/can_test_pcb.jpg" target="_blank" rel="noopener">
-<img alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" src="/img/can_test_pcb-400.jpeg" width="1200" height="900" srcset="/img/can_test_pcb-400.jpeg 400w, /img/can_test_pcb-800.jpeg 800w, /img/can_test_pcb-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+<img src="/img/can_test_pcb-400.jpeg" alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" width="1200" height="900" srcset="/img/can_test_pcb-400.jpeg 400w, /img/can_test_pcb-800.jpeg 800w, /img/can_test_pcb-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
 </div>
 <div class="horizontal-container">
 <p><a href="/assets/can_test_pcb_regulator.jpg" target="_blank" rel="noopener">
-<img alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" src="/img/can_test_pcb_regulator-400.jpeg" width="1200" height="900" srcset="/img/can_test_pcb_regulator-400.jpeg 400w, /img/can_test_pcb_regulator-800.jpeg 800w, /img/can_test_pcb_regulator-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+<img src="/img/can_test_pcb_regulator-400.jpeg" alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" width="1200" height="900" srcset="/img/can_test_pcb_regulator-400.jpeg 400w, /img/can_test_pcb_regulator-800.jpeg 800w, /img/can_test_pcb_regulator-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
 <p><p>To supply 3.3 volts to all the charger modules on my PCB, I designed and soldered a simple integrated buck converter.</p></p>
 </div>
@@ -63,13 +64,13 @@ Here are a few that I'm particularly proud of:</p>
     <p>As a member of <a href="https://huskysat.org/">Husky Satellite Lab</a>
     I used <a href="https://www.kicad.org/">KiCad</a> to design circuit boards that will fly on HuskySat-2. Here's a photograph of a radio I designed, based heavily on <a href="https://github.com/OpenLST/openlst">OpenLST</a>.</p>
 <p><a href="/assets/circuit.jpg" target="_blank" rel="noopener">
-<img alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" src="/img/circuit-400.jpeg" width="1200" height="900" srcset="/img/circuit-400.jpeg 400w, /img/circuit-800.jpeg 800w, /img/circuit-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+<img src="/img/circuit-400.jpeg" alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" width="1200" height="900" srcset="/img/circuit-400.jpeg 400w, /img/circuit-800.jpeg 800w, /img/circuit-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
 </div>
 <p>At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of a conventional wire-wound coil, it uses an integrated PCB spiral. Here's a video I made about it:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cGJYCe6mGR0?si=WpQh7-10B17vfXuP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <h2>Personal Projects</h2>
-<p>Did you know I'm an avid <a href="https://doc.rust-lang.org/book/">rustacean</a>? 🦀 I created a file transfer tool called <a href="https://github.com/manforowicz/gday">Gday</a>, and wrote a <a href="/gday/">blog post</a> about it.</p>
+<p>I enjoy programming in <a href="https://doc.rust-lang.org/book/">Rust</a>? I created a file transfer tool called <a href="https://github.com/manforowicz/gday">Gday</a>, and wrote a <a href="/gday/">blog post</a> about it.</p>
 <script src="https://asciinema.org/a/692670.js" id="asciicast-692670" async="true"></script>
 <p>Also, check out this <a href="/flock/">boid simulation</a> I wrote in Rust!</p>
 <p>I enjoy making educational YouTube videos such as <em>The Just One More Paradox</em> (see below).
@@ -82,8 +83,7 @@ I enjoy exploring creative radio protocols such as <a href="https://en.wikipedia
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0HckCmFCpzc?si=24FlGgH9R9AdjkjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="slow-flyer"></iframe>
 <h2>University of Washington</h2>
 <p>My interest in the interaction of hardware and software led me to become a teaching assistant for CSE 351 (Hardware/Software Interface). From January 2025 to June 2025, I helped students learn C, Linux, GDB, virtual memory, and caching. I love teaching, as it lets me share my enthusiasm about computing with others!</p>
-<p>I'm spending the summer of 2025 working as a research assistant, helping develop a new CS course at UW, that will teach about concurrency.
-In preparation for the course's initial offering in winter 2026, I'm developing auto-graded programming assignments covering asynchronous programming and cache coherence.</p>
+<p>I spent the summer of 2025 working as a research assistant, helping develop a new CS course at UW about concurrency. I'll be TA'ing for it this winter 2026 quarter. that will teach about concurrency.</p>
 <p>I also enjoy making websites for student organizations at the University of Washington. I maintain the websites of <a href="https://huskysat.org/team">Husky Satellite Lab</a> (<a href="https://github.com/UWCubeSat/hsl-website">code</a>) and <a href="https://uw-programming.netlify.app/">Competitive Programming Club</a> (<a href="https://github.com/manforowicz/uwcp-site">code</a>).</p>
 <p>I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here's a video of me flying a DIY airplane our team built:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MtJTZ6KJV2U?si=ujwtz4EUnSX33SSN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="plane-chase"></iframe>
