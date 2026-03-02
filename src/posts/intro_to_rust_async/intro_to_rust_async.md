@@ -242,10 +242,10 @@ You can also fix it by switching from an std mutex to a Tokio mutex, which integ
 A common pattern is to
 [split()](https://docs.rs/tokio/latest/tokio/io/fn.split.html)
 a connection like [Tokio TcpStream](https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html)
-into a read half and write half, and spawn a separate task with each.
+into a read half and write half, and spawn a separate task for each.
 This allows you to concurrently read and write.
 
-If another task wants something to be written, they can send it to the write task with a 
+If another task wants something to be written, it can send it to the write task with a 
 [Tokio channel](https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.channel.html).
 
 ### Links to useful Tokio stuff
