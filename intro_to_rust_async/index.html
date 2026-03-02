@@ -206,9 +206,9 @@ note: future is not `Send` as this value is used across an await</code></pre>
 <p>A common pattern is to
 <a href="https://docs.rs/tokio/latest/tokio/io/fn.split.html">split()</a>
 a connection like <a href="https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html">Tokio TcpStream</a>
-into a read half and write half, and spawn a separate task with each.
+into a read half and write half, and spawn a separate task for each.
 This allows you to concurrently read and write.</p>
-<p>If another task wants something to be written, they can send it to the write task with a
+<p>If another task wants something to be written, it can send it to the write task with a
 <a href="https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.channel.html">Tokio channel</a>.</p>
 <h3>Links to useful Tokio stuff</h3>
 <ul>
