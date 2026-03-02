@@ -157,7 +157,7 @@ On the other hand, the OS must store a stack and all registers for each suspende
 To "schedule" a future, Tokio simply calls `poll()` on it, and its state machine proceeds to the next `await` point.
 On the other hand, the OS must save and restore all registers on each context switch.
 
-See [overhead_experiment.md](overhead_experiment.md) for a real test.
+See this [overhead_experiment](overhead_experiment/).
 
 ### Async benefit: cancellation
 
