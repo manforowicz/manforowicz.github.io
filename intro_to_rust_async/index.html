@@ -139,7 +139,7 @@ On the other hand, the OS must store a stack and all registers for each suspende
 <h3>Async benefit: cheaper context switching</h3>
 <p>To &quot;schedule&quot; a future, Tokio simply calls <code>poll()</code> on it, and its state machine proceeds to the next <code>await</code> point.
 On the other hand, the OS must save and restore all registers on each context switch.</p>
-<p>See <a href="overhead_experiment.md">overhead_experiment.md</a> for a real test.</p>
+<p>See this <a href="overhead_experiment/">overhead_experiment</a>.</p>
 <h3>Async benefit: cancellation</h3>
 <p>Arbitrary async functions can be immediately cancelled by just dropping their future, which is useful for timeouts. This is not possible with threads.</p>
 <h3>OS Thread benefit: parallelism</h3>

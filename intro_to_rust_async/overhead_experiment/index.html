@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>OS Threads vs. Async overhead</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Marcin Anforowicz's website">
+    <meta name="keywords" content="blog, computer science, math, programming, competitive programming, Rust">
+    <meta name="author" content="Marcin Anforowicz">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/prism.css">
+    <link rel="stylesheet" media="print" href="/assets/print.css">
+    <link rel="icon" href="/assets/icon.ico">
+    <link rel="icon" href="/assets/icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <meta property="og:title" content="OS Threads vs. Async overhead">
+    <meta property="og:description" content="Marcin Anforowicz's website">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/assets/marcin_mountain_2025.jpg">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="/" >HOME</a>
+            <a href="/posts" >POSTS</a>
+        </nav>
+    </header>
+    <main>
+        <h1>OS Threads vs. Async overhead</h1>
+        <p>Let's compare the overhead of OS threads and async Tokio tasks on an IO-bound workload where tasks spend most of their time waiting on something.</p>
+<p>(Note that on CPU-bound computations, async doesn't provide any advantage over OS threads.)</p>
+<h2>OS threads</h2>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">const</span> <span class="token constant">NUM_THREADS</span><span class="token punctuation">:</span> <span class="token keyword">u32</span> <span class="token operator">=</span> <span class="token number">10_000</span><span class="token punctuation">;</span>
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> handles <span class="token operator">=</span> <span class="token class-name">Vec</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token constant">NUM_THREADS</span> <span class="token punctuation">{</span>
+        <span class="token comment">// spawn an OS thread</span>
+        <span class="token keyword">let</span> handle <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>thread<span class="token punctuation">::</span></span><span class="token function">spawn</span><span class="token punctuation">(</span>my_function<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        handles<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>handle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> handle <span class="token keyword">in</span> handles <span class="token punctuation">{</span>
+        handle<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">fn</span> <span class="token function-definition function">my_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// simulate waiting on I/O, like a network call</span>
+    <span class="token namespace">std<span class="token punctuation">::</span>thread<span class="token punctuation">::</span></span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token namespace">std<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span><span class="token class-name">Duration</span><span class="token punctuation">::</span><span class="token function">from_secs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>/usr/bin/time -v ./target</code> says:</p>
+<pre><code>User time (seconds): 0.07
+System time (seconds): 0.57
+Percent of CPU this job got: 53%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.19
+Maximum resident set size (kbytes): 97436
+</code></pre>
+<p>Not too bad!</p>
+<p>Each thread is given a 2 MiB stack of virtual memory,
+but the OS only maps virtual pages to physical pages when the program accesses them.
+That's why this program uses only 9.7 KB of physical memory per thread.</p>
+<p>Unfortunately, the CPU spent 0.57 handling page faults and context switching,
+but only 0.07 seconds running our work.</p>
+<p>When I increase <code>NUM_THREADS</code> to 20,000,
+the OS kills the program with &quot;Resource temporarily unavailable&quot;
+because it exceeds Linux's <code>threads-max</code> limit.
+Increasing this limit allows us to run over 100,000 OS threads.</p>
+<h2>Async tasks</h2>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">const</span> <span class="token constant">NUM_TASKS</span><span class="token punctuation">:</span> <span class="token keyword">u32</span> <span class="token operator">=</span> <span class="token number">10_000</span><span class="token punctuation">;</span>
+<span class="token attribute attr-name">#[tokio::main]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> handles <span class="token operator">=</span> <span class="token class-name">Vec</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token constant">NUM_TASKS</span> <span class="token punctuation">{</span>
+        <span class="token comment">// spawn an async task</span>
+        <span class="token keyword">let</span> handle <span class="token operator">=</span> <span class="token namespace">tokio<span class="token punctuation">::</span></span><span class="token function">spawn</span><span class="token punctuation">(</span><span class="token function">my_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        handles<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>handle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> handle <span class="token keyword">in</span> handles <span class="token punctuation">{</span>
+        handle<span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">my_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// simulate waiting on I/O, like a network call</span>
+    <span class="token namespace">tokio<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token namespace">std<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span><span class="token class-name">Duration</span><span class="token punctuation">::</span><span class="token function">from_secs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>/usr/bin/time -v ./target</code> says:</p>
+<pre><code>User time (seconds): 0.02
+System time (seconds): 0.01
+Percent of CPU this job got: 3%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.00
+Maximum resident set size (kbytes): 6604
+</code></pre>
+<p>Async has even less overhead!</p>
+<p>Each only 660 bytes of memory are used per task.</p>
+<p>Now the CPU spent only 0.02+0.01 seconds finishing this task!</p>
+
+    </main>
+
+    <footer id="footer">
+        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
+        <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
+        <a rel="noopener noreferrer" href="https://github.com/manforowicz">GitHub</a>
+        <br><br>
+            By Marcin Anforowicz (manforowicz at gmail dot com)
+    </footer>
+</body>
+
+</html>
