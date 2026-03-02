@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Intro to Rust's async/await</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Marcin Anforowicz's website">
+    <meta name="keywords" content="blog, computer science, math, programming, competitive programming, Rust">
+    <meta name="author" content="Marcin Anforowicz">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/prism.css">
+    <link rel="stylesheet" media="print" href="/assets/print.css">
+    <link rel="icon" href="/assets/icon.ico">
+    <link rel="icon" href="/assets/icon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <meta property="og:title" content="Intro to Rust's async/await">
+    <meta property="og:description" content="Marcin Anforowicz's website">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/assets/marcin_mountain_2025.jpg">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="/" >HOME</a>
+            <a href="/posts" >POSTS</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Intro to Rust's async/await</h1>
+        
+<div>
+    Posted on
+    <strong><time datetime="2026-03-02T00:00:00.000Z">2 March 2026</time></strong>
+    
+    by Marcin Anforowicz.
+</div>
+
+
+<p>Rust's async/await lets you write programs with &quot;cooperative stackless coroutines&quot; called tasks.
+A task has less overhead than an OS thread when used for concurrent IO-bound workloads that spend most of their time waiting for things like network requests.
+They're also easier to cancel (stop executing) than threads.</p>
+<p>An async runtime (typically <a href="https://docs.rs/tokio/">Tokio</a>) runs async functions concurrently.
+You can spawn a task like this:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> task_handle <span class="token operator">=</span> <span class="token namespace">tokio<span class="token punctuation">::</span>task<span class="token punctuation">::</span></span><span class="token function">spawn</span><span class="token punctuation">(</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">i32</span> <span class="token punctuation">{</span>
+    <span class="token comment">// call another async fn</span>
+    <span class="token keyword">let</span> future <span class="token operator">=</span> <span class="token function">network_request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// yield until its return value is ready</span>
+    <span class="token keyword">let</span> response<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> future<span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> response
+<span class="token punctuation">}</span></code></pre>
+<p>The compiler transforms each <code>async fn</code> into a normal function that immediately returns a <code>Future</code> object:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">impl</span> <span class="token class-name">Future</span><span class="token operator">&lt;</span><span class="token class-name">Output</span><span class="token operator">=</span><span class="token keyword">i32</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token class-name">CompilerGeneratedStateMachine</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>A <code>Future</code> represents a return value that isn't ready yet.
+This is similar to a <code>Promise</code> in Javascript, except that
+in Rust, futures are lazy, so they don't run until spawned or awaited.</p>
+<p>The <code>await</code> keyword starts a future and waits for its return value.
+While waiting, it yields to the runtime, allowing it to schedule other tasks.</p>
+<p>You can call normal functions from async functions, as long as they don't block.
+Blocking would block the entire runtime thread because the runtime can't preempt tasks.
+So instead of calling blocking standard library functions like <a href="https://doc.rust-lang.org/stable/std/fs/fn.read.html"><code>fs::read()</code></a>, use Tokio-provided async <a href="https://docs.rs/tokio/latest/tokio/fs/fn.read.html">alternatives</a> and <code>await</code> their results.</p>
+<p>Internally, Tokio-provided async functions use non-blocking system calls to start an operation, and request the operating system to notify the runtime's event loop when the result is ready.
+Tokio also provides async-compatible versions of objects like TcpStream, Mutex, channels, etc.</p>
+<p>The <code>await</code> keyword can only be used in async functions, because only async functions are capable of yielding to the runtime.
+Before yielding, <code>await</code> ensures all variables used later are saved in its <code>Future</code> object. This allows the runtime to resume it needing without having to save its stack.
+This reduces memory usage, and is why Rust's async/await is called &quot;stackless&quot;.</p>
+<p>If you need to run an async function from a normal function, you have to create a runtime on which to run it:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> runtime <span class="token operator">=</span> <span class="token namespace">tokio<span class="token punctuation">::</span>runtime<span class="token punctuation">::</span></span><span class="token class-name">Runtime</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    runtime<span class="token punctuation">.</span><span class="token function">block_on</span><span class="token punctuation">(</span><span class="token function">async_main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>That's a lot of typing, so Tokio has a helper macro that runs <code>async main</code> on a runtime when the program starts:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[tokio::main]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span></code></pre>
+<h2>Cancellation</h2>
+<p>Once an OS thread is running, it can't be reliably cancelled.
+For example, if it's blocked on a system call (like a network <code>read()</code>), killing the thread won't release locks or clean up resources.
+Unix signals don’t really solve this: they interrupt execution at arbitrary points, but don't guarantee all object destructors are safely run.</p>
+<p>On the other hand, a <code>Future</code> can be cancelled by simply dropping it.
+This immediately drops all variables it owns, causing their destructors to run.
+Cancellation makes it easy to add a timeout to arbitrary async functions:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> duration <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span><span class="token class-name">Duration</span><span class="token punctuation">::</span><span class="token function">from_secs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token namespace">tokio<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span><span class="token function">timeout</span><span class="token punctuation">(</span>duration<span class="token punctuation">,</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+<span class="token keyword">match</span> result <span class="token punctuation">{</span>
+    <span class="token class-name">Ok</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Fetched value: {num}"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token class-name">Err</span><span class="token punctuation">(</span>_timeout<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"The future was dropped due to timeout"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Cancellation allows combinators like <a href="https://docs.rs/tokio/latest/tokio/macro.select.html">select!()</a> and <a href="https://docs.rs/tokio/latest/tokio/macro.try_join.html">try_join!()</a>. <code>try_join!()</code> concurrently runs multiple futures to completion.
+If any returns an error, it immediately cancels the others:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> out<span class="token punctuation">:</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">FetchError</span><span class="token operator">></span> <span class="token operator">=</span>
+    <span class="token namespace">tokio<span class="token punctuation">::</span></span><span class="token macro property">try_join!</span><span class="token punctuation">(</span><span class="token function">fetch1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fetch2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>If you ever want to retry after cancelling, you can usually just call the async function again. However, some async functions like Tokio's <a href="https://docs.rs/tokio/latest/tokio/io/trait.AsyncReadExt.html#method.read_exact">read_exact()</a> are not &quot;cancel-safe&quot;.
+This means you might miss a few bytes or messages if you retry like this.</p>
+<h2>How things work behind the scenes</h2>
+<p>A future is a compiler-generated state machine that stores the state of an async function suspended on an <code>await</code> point.
+Each state stores all variables needed for the future to resume.
+Here's a pseudocode example:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">enum</span> <span class="token type-definition class-name">CompilerGeneratedFuture</span> <span class="token punctuation">{</span>
+    <span class="token class-name">AwaitPoint1</span> <span class="token punctuation">{</span>
+        local_variable_a<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+        local_reference_to_a<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">u32</span><span class="token punctuation">,</span>
+        nested_future<span class="token punctuation">:</span> <span class="token class-name">Future1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token class-name">AwaitPoint2</span> <span class="token punctuation">{</span>
+        local_variable_b<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+        nested_future<span class="token punctuation">:</span> <span class="token class-name">Future2</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token class-name">Finished</span> <span class="token punctuation">{</span>
+        output<span class="token punctuation">:</span> <span class="token keyword">i32</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Real futures are generated in a lower-level language called <a href="https://rustc-dev-guide.rust-lang.org/mir/index.html">MIR</a>.</p>
+<p>A future might contain saved variables that reference other variables it contains.
+These references would become dangling if the future was moved in memory. To prevent moves, the runtime internally pins suspended futures to fixed memory locations.</p>
+<p>Each future has a compiler-generated <code>poll()</code> method that advances it to the furthest state immediately possible.
+The runtime runs futures by repeatedly calling this method.</p>
+<p>If the future has finished, <code>poll()</code> returns its output value.
+If execution reaches an <code>await</code> point that isn’t ready yet, <code>poll()</code> returns a &quot;pending&quot; value, and tells the OS to notify the runtime when it's ready to be polled again.
+The runtime will <code>poll()</code> the future again once it's ready.
+In the meantime, it can <code>poll()</code> other spawned futures.
+This is how <code>await</code> &quot;yields&quot; back to the runtime!</p>
+<p>But async programmers don't need to know what's going on behind the scenes.
+They can simply write async functions as if they &quot;linearly&quot; execute line-by-line, just like threads.</p>
+<h2>OS Threads vs. Async</h2>
+<h3>Async benefit: less memory</h3>
+<p>A future is a &quot;stackless coroutine&quot; that stores only the variables it'll need when it's resumed.
+On the other hand, the OS must store a stack and all registers for each suspended thread, even if they're not all needed.</p>
+<h3>Async benefit: cheaper context switching</h3>
+<p>To &quot;schedule&quot; a future, Tokio simply calls <code>poll()</code> on it, and its state machine proceeds to the next <code>await</code> point.
+On the other hand, the OS must save and restore all registers on each context switch.</p>
+<p>See <a href="overhead_experiment.md">overhead_experiment.md</a> for a real test.</p>
+<h3>Async benefit: cancellation</h3>
+<p>Arbitrary async functions can be immediately cancelled by just dropping their future, which is useful for timeouts. This is not possible with threads.</p>
+<h3>OS Thread benefit: parallelism</h3>
+<p>The OS preempts threads that are doing heavy calculations, ensuring CPU cores are fairly shared.
+On the other hand, async only yields on <code>await</code>, so heavy calculations would block the runtime thread.</p>
+<p>Tokio partially mitigates this by spawning a thread per core, and distributing tasks between them. But the whole purpose of async is to cheaply yield to the runtime with <code>await</code> when waiting on things like network requests.
+If you're not using <code>await</code>, async has no benefit over threads.</p>
+<ul>
+<li>Threads should be used for CPU-bound workloads that benefit from parallelism.</li>
+<li>Async should be used for IO-bound workloads that spend most of their time waiting on things like network requests.</li>
+</ul>
+<h3>OS Thread benefit: ease-of-use</h3>
+<p>Async Rust has a steep learning curve, with more complicated errors.
+In many cases, you could just stick with threads.
+However, if you need to spawn more than a few thousand tasks that spend most of their time waiting, or would benefit from easy cancellation and timeouts, async is a good choice.</p>
+<h2>List of alternatives to OS threads</h2>
+<ul>
+<li>
+<p>Event loops: Programmers implement state machines by hand.
+(Similarly to how you implemented the memory controller state machine in the cache coherence simulator.)
+Then, they manually make non-blocking system calls, and advance the state machines as results come in.
+This is how Nginx works.</p>
+</li>
+<li>
+<p>Callbacks: Uses a runtime like Tokio, but without the <code>await</code> syntax.
+You tell it to start a task, and provide a function callback that it should call when the task completes.
+This is easier to write than manual event loops, but harder than async.
+This is how concurrency was done in Javascript before the await syntax was introduced.</p>
+</li>
+<li>
+<p>Async Rust: Async functions compile to state machines called futures, which are polled by a runtime.</p>
+</li>
+<li>
+<p>Goroutines: Stackful, so each coroutine has its own stack. This still uses less memory than OS threads, because the garbage collector dynamically resizes coroutine stacks. Implicit yield/await points are inserted by the compiler.
+All functions are implicitly &quot;async&quot;, which greatly simplifies programming, but takes away some low-level control from the programmer.</p>
+</li>
+</ul>
+<h2>Async Rust tips</h2>
+<h3>Don't block in async functions</h3>
+<p>You should <code>await</code> instead of blocking in async functions.
+Blocking would block the entire runtime thread because the runtime can't preempt tasks.</p>
+<p>This means you should use:</p>
+<ul>
+<li><a href="https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.channel.html">Tokio channels</a> instead of <a href="https://doc.rust-lang.org/std/sync/mpsc/fn.channel.html">std channels</a>.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/time/fn.sleep.html">Tokio sleep</a> instead of <a href="https://doc.rust-lang.org/std/thread/fn.sleep.html">std sleep</a>.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html">Tokio TcpStream</a> instead of <a href="https://doc.rust-lang.org/std/net/struct.TcpStream.html">std TcpStream</a>.</li>
+<li>etc.</li>
+</ul>
+<h3>Mutexes</h3>
+<p>You can use a normal <a href="https://doc.rust-lang.org/std/sync/struct.Mutex.html">std mutex</a> instead of a <a href="https://docs.rs/tokio/latest/tokio/sync/struct.Mutex.html">Tokio mutex</a>, as long as you don't block or <code>await</code> while holding it.</p>
+<p>If you get an error like this, it means you're holding a locked std mutex across an <code>await</code> point:</p>
+<pre class="language-raw"><code class="language-raw">help: within `impl std::future::Future<Output = ()>`, the trait `std::marker::Send` is not implemented for `MutexGuard<'_, u32>`
+
+note: future is not `Send` as this value is used across an await</code></pre>
+<p>You can fix this by limiting the scope where you hold the lock:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">let</span> guard <span class="token operator">=</span> mutex<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token macro property">dbg!</span><span class="token punctuation">(</span>guard<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// MutexGuard is dropped, unlocking the mutex</span>
+<span class="token punctuation">}</span>
+<span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span></code></pre>
+<p>You can also fix it by switching from an std mutex to a Tokio mutex, which integrates with the runtime to support holding across <code>await</code> points.</p>
+<h3>Split</h3>
+<p>A common pattern is to
+<a href="https://docs.rs/tokio/latest/tokio/io/fn.split.html">split()</a>
+a connection like <a href="https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html">Tokio TcpStream</a>
+into a read half and write half, and spawn a separate task with each.
+This allows you to concurrently read and write.</p>
+<p>If another task wants something to be written, they can send it to the write task with a
+<a href="https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.channel.html">Tokio channel</a>.</p>
+<h3>Links to useful Tokio stuff</h3>
+<ul>
+<li><a href="https://docs.rs/tokio/latest/tokio/task/fn.spawn.html">spawn()</a> starts running a future in the background, and returns a handle which you can <code>await</code> to wait for the task to finish.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/time/fn.timeout.html">timeout()</a> adds a timeout to any async function.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/macro.try_join.html">try_join!()</a> concurrently runs multiple futures to completion.
+If any returns an error, it immediately cancels the others.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/macro.select.html">select!()</a> runs multiple futures. When the first future completes, it cancels all the other futures.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/io/fn.split.html">split()</a> takes an object that can read and write, like TCPStream, and splits it into a read half and a write half which can be used independently.</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.channel.html">channel()</a> is a channel like the one in std, except it lets you <code>await</code> instead of blocking. Useful for sending values between tasks.</li>
+</ul>
+
+
+<br>
+<hr><div><span>Previous: <a href="/calendar_habits/">A way to build habits</a></span>
+</div>
+    </main>
+
+    <footer id="footer">
+        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/m-anforowicz/">LinkedIn</a>
+        <a rel="noopener noreferrer" href="https://www.youtube.com/@marcinanforowicz8319">YouTube</a>
+        <a rel="noopener noreferrer" href="https://github.com/manforowicz">GitHub</a>
+        <br><br>
+            By Marcin Anforowicz (manforowicz at gmail dot com)
+    </footer>
+</body>
+
+</html>
