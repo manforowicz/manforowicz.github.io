@@ -184,7 +184,6 @@ However, if you need to spawn more than a few thousand tasks that spend most of 
 ## List of alternatives to OS threads
 
 - Event loops: Programmers implement state machines by hand. 
-(Similarly to how you implemented the memory controller state machine in the cache coherence simulator.)
 Then, they manually make non-blocking system calls, and advance the state machines as results come in.
 This is how Nginx works.
 
