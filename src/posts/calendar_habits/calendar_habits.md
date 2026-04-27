@@ -20,4 +20,4 @@ Following this strategy, I did over 365 minutes of planking, 5475 push ups, and 
 
 Another thing that helped me is having a physical pull up bar at home.
 
-{% image "calendar_photo_2025.jpg", "An image of a calendar with x markings on it." %}
+{% image "calendar_photo_2025.jpg", "A calendar with x markings on it." %}
