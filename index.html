@@ -29,13 +29,24 @@
     </header>
     <main>
         <h1>Marcin's Website</h1>
-        <p>Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and engineering.
-Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
-or visit my <a href="https://github.com/manforowicz">GitHub</a> to learn more!</p>
+        <p>Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and research.
+I'll graduate from the University of Washington with a master's degree in CSE in June 2027.
+Feel free to download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
+or view my <a href="https://github.com/manforowicz">GitHub</a> account.</p>
 <p><a href="/assets/marcin_mountain_2025.jpg" target="_blank" rel="noopener">
 <img src="/img/marcin_mountain_2025-400.jpeg" alt="Marcin on a mountain." style="width: 50%;" loading="lazy" decoding="async" width="1200" height="901" srcset="/img/marcin_mountain_2025-400.jpeg 400w, /img/marcin_mountain_2025-800.jpeg 800w, /img/marcin_mountain_2025-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
 </a></p>
-<h2>Industry Experience</h2>
+<h2>High-altitude balloon</h2>
+<p>In May 2026, the Husky Satellite Lab launched the PHAT-3 high altitude balloon.
+I started this project over a year earlier, and it's been a blast working with the team to <a href="https://github.com/UWCubeSat/phat3_code">design and program the payload PCB</a>.
+Our balloon ascended to over 28km (90,000ft), and landed 57km (35mi) away, after a roughly 2.5 hour flight. We received atmospheric sensor telemetry transmitted over LoRa at 915MHz for several kilometers, and recovered footage from the onboard SD cards. I learned a lot, had fun, and made a video about it. Thanks everyone, and especially Yehoshua for leading the launch effort!</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XpSKpyZeOgA?si=h5vrm9BJkqOIBPJ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2>Qumulo Internship</h2>
+<p>This summer of 2026, I'm interning at Qumulo, a company that makes a flexible distributed filesystem.
+It supports protocols like SMB, NFS, FTP, and allows customers to deploy it on any mix of on-prem servers and cloud object storage.</p>
+<p>My project is allowing the filesystem to mount external S3 buckets, allowing customers to access them as if they're real files.
+So far I contributed to the large Rust and C codebase by writting distributed chaos tests, adding support for multipart S3 object upload, and debugging distributed transaction race conditions.</p>
+<h2>WiBotic internship</h2>
 <p>In the summer of 2024, I had the pleasure of working as a software engineering intern at <a href="https://www.wibotic.com/">WiBotic</a>.
 Check out my <a href="https://www.linkedin.com/posts/m-anforowicz_today-is-the-final-day-of-my-engineering-activity-7242941893976711169-C97v">LinkedIn post</a>
 and watch this video to learn more about my work there.</p>
@@ -44,8 +55,14 @@ and watch this video to learn more about my work there.</p>
     Your browser does not support the video tag.
 </video>
 <h2>Circuit Boards</h2>
-<p>I enjoy designing circuit boards.
-Here are a few that I'm particularly proud of:</p>
+<div class="horizontal-container">
+<p><a href="/assets/phat3_pcb.jpg" target="_blank" rel="noopener">
+<img src="/img/phat3_pcb-400.jpeg" alt="Circuit board" style="width: 100%;" loading="lazy" decoding="async" width="1200" height="901" srcset="/img/phat3_pcb-400.jpeg 400w, /img/phat3_pcb-800.jpeg 800w, /img/phat3_pcb-1200.jpeg 1200w" sizes="(max-width: 50rem) 100vw, 50rem">
+</a></p>
+<p><p>Here's a photo of <a href="https://github.com/UWCubeSat/PHAT-3-Main-Board">the PCB</a> Yehoshua and I designed for our high-altitude balloon project.
+It has cameras and sensors to collect data, a radio to transmit it, and an SD card to save it.
+</p></p>
+</div>
 <div class="horizontal-container">
     <p>As an engineering intern at <a href="https://www.wibotic.com/">WiBotic</a>, I designed a stackable circuit board to hold charger modules on a shared CAN bus. It's used for running automated CAN bus tests.
     I also wrote over 3000 lines of <a href="https://github.com/wibotic/socketcand_translate">ESP32 firmware</a>
@@ -70,21 +87,22 @@ Here are a few that I'm particularly proud of:</p>
 <p>At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of a conventional wire-wound coil, it uses an integrated PCB spiral. Here's a video I made about it:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cGJYCe6mGR0?si=WpQh7-10B17vfXuP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <h2>Personal Projects</h2>
-<p>I enjoy programming in <a href="https://doc.rust-lang.org/book/">Rust</a>? I created a file transfer tool called <a href="https://github.com/manforowicz/gday">Gday</a>, and wrote a <a href="/gday/">blog post</a> about it.</p>
+<p>My favorite programming language is <a href="https://doc.rust-lang.org/book/">Rust</a>. To get better at it, I created a file transfer tool called <a href="https://github.com/manforowicz/gday">Gday</a>, and wrote a <a href="/gday/">blog post</a> about it.</p>
 <script src="https://asciinema.org/a/692670.js" id="asciicast-692670" async="true"></script>
 <p>Also, check out this <a href="/flock/">boid simulation</a> I wrote in Rust!</p>
 <p>I enjoy making educational YouTube videos such as <em>The Just One More Paradox</em> (see below).
 I made this video before I had any formal education in probability, so the explanations aren't very rigorous, but all the concepts still hold.
-I <a href="https://github.com/manforowicz/Manim-Videos">programmed the animations</a> for this video using <a href="https://www.manim.community/">Manim</a>, an open source visualization library.</p>
+I <a href="https://github.com/manforowicz/Manim-Videos">programmed the animations</a> for this video using Manim, an open source visualization library.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_FuuYSM7yOo?si=1e5alMVAzM3schbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <p>I'm a certified amateur radio operator since 2019 (callsign: KJ7JCN).
-I enjoy exploring creative radio protocols such as <a href="https://en.wikipedia.org/wiki/WSPR_(amateur_radio_software)">WSPR</a>, <a href="https://en.wikipedia.org/wiki/Internet_Radio_Linking_Project">IRLP</a>, and <a href="https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System">APRS</a>.</p>
+I enjoy exploring creative radio protocols such as WSPR, IRLP, and APRS.</p>
 <p>I also enjoy building and flying model airplanes:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0HckCmFCpzc?si=24FlGgH9R9AdjkjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="slow-flyer"></iframe>
 <h2>University of Washington</h2>
-<p>My interest in the interaction of hardware and software led me to become a teaching assistant for CSE 351 (Hardware/Software Interface). From January 2025 to June 2025, I helped students learn C, Linux, GDB, virtual memory, and caching. I love teaching, as it lets me share my enthusiasm about computing with others!</p>
-<p>I spent the summer of 2025 working as a research assistant, helping develop a new CS course at UW about concurrency. I'll be TA'ing for it this winter 2026 quarter. that will teach about concurrency.</p>
-<p>I also enjoy making websites for student organizations at the University of Washington. I maintain the websites of <a href="https://huskysat.org/team">Husky Satellite Lab</a> (<a href="https://github.com/UWCubeSat/hsl-website">code</a>) and <a href="https://uw-programming.netlify.app/">Competitive Programming Club</a> (<a href="https://github.com/manforowicz/uwcp-site">code</a>).</p>
+<p>I spent the summer of 2025 as a research assistant, helping develop a new UW course called <em>CSE 493L: Concurrency, Parallelism, and Rust</em>. I TA'ed for it in winter 2026, and will TA it again in autumn 2026. One of the assignments I designed requires students to create a simple mail server with async Rust. This <a href="/intro_to_rust_async"><em>Intro to Rust's async/await</em></a> post is one of the teaching materials I created. I enjoy teaching about synchronization, model-checking, testing, and API design.</p>
+<p>In spring 2026, my machine learning capstone team ran experiments on ViT structured pruning, and wrote a <a href="/assets/anforowicz_ml_capstone.pdf">report</a> about it.</p>
+<p><a href="/assets/anforowicz_ml_capstone.pdf"><img src="/assets/anforowicz_ml_capstone_thumbnail.png" alt="My machine learning capstone document"></a></p>
+<p>I enjoy making websites for student organizations at the University of Washington. I maintain the websites of <a href="https://huskysat.org/team">Husky Satellite Lab</a> (<a href="https://github.com/UWCubeSat/hsl-website">code</a>) and <a href="https://uw-programming.netlify.app/">Competitive Programming Club</a> (<a href="https://github.com/manforowicz/uwcp-site">code</a>).</p>
 <p>I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here's a video of me flying a DIY airplane our team built:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MtJTZ6KJV2U?si=ujwtz4EUnSX33SSN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="plane-chase"></iframe>
 <p>And here's a video of me trying to race an FPV (first-person-view) drone.</p>
@@ -95,22 +113,25 @@ I enjoy exploring creative radio protocols such as <a href="https://en.wikipedia
 <p>Some relevant courses I've taken at the University of Washington include:</p>
 <ul>
 <li>
+<p><strong>Reinforcement Learning</strong> - Supervised and self-superised learning is often used to train models to mimic humans. But what if there isn't enough human data, or we want an AI to be unhindered by human performance? Reinforcement learning is a broad field of research creating solutions to this problem. Things I learned include Soft Q Learning, and model-based approaches.</p>
+</li>
+<li>
+<p><strong>Deep Learning</strong> - Recent AI progress was driven by figuring out how to throw more compute at a problem. Modern deep neural networks with innovations like skip connections and attention are great at finding patterns in large unlabelled datasets. In this class I implemented a transformer, studied encoder-decoder architectures, and learned about using latent space vectors in creative ways.</p>
+</li>
+<li>
+<p><strong>Wireless Communication</strong> - Devices like our phones use a complex stack of compression, encoding, modulation, and transmission to send information over a large distance. In this course I programmed a software defined radio using digital signal processing principles. I used it to decode the azimuth information transmitted over VOR.</p>
+</li>
+<li>
 <p><strong>Distributed Systems</strong> - This course involved implementing Paxos, a fault-tolerant consensus protocol. Paxos is the backbone of services like Google and AWS, allowing them to reliably operate, even if multiple servers fail.</p>
 </li>
 <li>
 <p><strong>Fundementals of Electrical Engineering</strong> - In this course, I learned how to analytically design and test electrical circuits.</p>
 </li>
 <li>
-<p><strong>Foundations of Computing</strong> - Here I learned the theoretical math underlying various aspects of computer science.</p>
-</li>
-<li>
 <p><strong>Software Design And Implementation</strong> - Here I created multiple fullstack typescript projects, using the best practices in version control, testing, and modularity.</p>
 </li>
 <li>
 <p><strong>Data Structures and Parallelism</strong> - This course covered parallelism and data structures through the lens of time complexity.</p>
-</li>
-<li>
-<p><strong>Systems Programming</strong> - In this course I gained experience writing low-level C++ projects. I learned the ins-and-outs of system calls and memory management.</p>
 </li>
 <li>
 <p><strong>The Hardware/Software Interface</strong> - Here I learned to use gdb, read assembly, and understand memory layout.</p>
