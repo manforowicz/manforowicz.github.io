@@ -5,3 +5,6 @@ Explore my website to learn more about me!
 ## Technical
 
 Auto-builds using the [11ty](https://www.11ty.dev/) static site generator.
+
+TODO: Consider switching to a Python script that just calls pandoc and imagemagick.
+

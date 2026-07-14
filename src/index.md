@@ -2,13 +2,31 @@
 title: Marcin's Website
 ---
 
-Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and engineering.
-Download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
-or visit my <a href="https://github.com/manforowicz">GitHub</a> to learn more!
+Hi, I'm Marcin Anforowicz. I enjoy working on projects that combine software, creativity, and research.
+I'll graduate from the University of Washington with a master's degree in CSE in June 2027.
+Feel free to download my <a href="https://raw.githubusercontent.com/manforowicz/resume/main/Anforowicz_Marcin_resume.pdf" target="_blank">resume</a>
+or view my <a href="https://github.com/manforowicz">GitHub</a> account.
 
 {% image "marcin_mountain_2025.jpg", "Marcin on a mountain.", 50 %}
 
-## Industry Experience
+## High-altitude balloon
+
+In May 2026, the Husky Satellite Lab launched the PHAT-3 high altitude balloon.
+I started this project over a year earlier, and it's been a blast working with the team to [design and program the payload PCB](https://github.com/UWCubeSat/phat3_code).
+Our balloon ascended to over 28km (90,000ft), and landed 57km (35mi) away, after a roughly 2.5 hour flight. We received atmospheric sensor telemetry transmitted over LoRa at 915MHz for several kilometers, and recovered footage from the onboard SD cards. I learned a lot, had fun, and made a video about it. Thanks everyone, and especially Yehoshua for leading the launch effort!
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XpSKpyZeOgA?si=h5vrm9BJkqOIBPJ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+## Qumulo Internship
+
+This summer of 2026, I'm interning at Qumulo, a company that makes a flexible distributed filesystem.
+It supports protocols like SMB, NFS, FTP, and allows customers to deploy it on any mix of on-prem servers and cloud object storage.
+
+My project is allowing the filesystem to mount external S3 buckets, allowing customers to access them as if they're real files. 
+So far I contributed to the large Rust and C codebase by writting distributed chaos tests, adding support for multipart S3 object upload, and debugging distributed transaction race conditions.
+
+## WiBotic internship
 
 In the summer of 2024, I had the pleasure of working as a software engineering intern at [WiBotic](https://www.wibotic.com/).
 Check out my [LinkedIn post](https://www.linkedin.com/posts/m-anforowicz_today-is-the-final-day-of-my-engineering-activity-7242941893976711169-C97v)
@@ -21,9 +39,12 @@ and watch this video to learn more about my work there.
 
 ## Circuit Boards
 
-I enjoy designing circuit boards.
-Here are a few that I'm particularly proud of:
-
+<div class="horizontal-container">
+    {% image "phat3_pcb.jpg", "Circuit board", 100 %}
+    <p>Here's a photo of <a href="https://github.com/UWCubeSat/PHAT-3-Main-Board">the PCB</a> Yehoshua and I designed for our high-altitude balloon project.
+    It has cameras and sensors to collect data, a radio to transmit it, and an SD card to save it.
+    </p>
+</div>
 <div class="horizontal-container">
     <p>As an engineering intern at <a href="https://www.wibotic.com/">WiBotic</a>, I designed a stackable circuit board to hold charger modules on a shared CAN bus. It's used for running automated CAN bus tests.
     I also wrote over 3000 lines of <a href="https://github.com/wibotic/socketcand_translate">ESP32 firmware</a>
@@ -45,7 +66,7 @@ At Husky Satellite Lab, I also designed and built a magnetorquer PCB. Instead of
 
 ## Personal Projects
 
-I enjoy programming in [Rust](https://doc.rust-lang.org/book/)? I created a file transfer tool called [Gday](https://github.com/manforowicz/gday), and wrote a [blog post](/gday/) about it.
+My favorite programming language is [Rust](https://doc.rust-lang.org/book/). To get better at it, I created a file transfer tool called [Gday](https://github.com/manforowicz/gday), and wrote a [blog post](/gday/) about it.
 
 <script src="https://asciinema.org/a/692670.js" id="asciicast-692670" async="true"></script>
 
@@ -53,12 +74,12 @@ Also, check out this [boid simulation](/flock/) I wrote in Rust!
 
 I enjoy making educational YouTube videos such as _The Just One More Paradox_ (see below).
 I made this video before I had any formal education in probability, so the explanations aren't very rigorous, but all the concepts still hold.
-I [programmed the animations](https://github.com/manforowicz/Manim-Videos) for this video using [Manim](https://www.manim.community/), an open source visualization library.
+I [programmed the animations](https://github.com/manforowicz/Manim-Videos) for this video using Manim, an open source visualization library.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_FuuYSM7yOo?si=1e5alMVAzM3schbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 I'm a certified amateur radio operator since 2019 (callsign: KJ7JCN).
-I enjoy exploring creative radio protocols such as [WSPR](https://en.wikipedia.org/wiki/WSPR_(amateur_radio_software)), [IRLP](https://en.wikipedia.org/wiki/Internet_Radio_Linking_Project), and [APRS](https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System).
+I enjoy exploring creative radio protocols such as WSPR, IRLP, and APRS.
 
 I also enjoy building and flying model airplanes:
 
@@ -66,11 +87,13 @@ I also enjoy building and flying model airplanes:
 
 ## University of Washington
 
-My interest in the interaction of hardware and software led me to become a teaching assistant for CSE 351 (Hardware/Software Interface). From January 2025 to June 2025, I helped students learn C, Linux, GDB, virtual memory, and caching. I love teaching, as it lets me share my enthusiasm about computing with others!
+I spent the summer of 2025 as a research assistant, helping develop a new UW course called _CSE 493L: Concurrency, Parallelism, and Rust_. I TA'ed for it in winter 2026, and will TA it again in autumn 2026. One of the assignments I designed requires students to create a simple mail server with async Rust. This [_Intro to Rust's async/await_](/intro_to_rust_async) post is one of the teaching materials I created. I enjoy teaching about synchronization, model-checking, testing, and API design.
 
-I spent the summer of 2025 working as a research assistant, helping develop a new CS course at UW about concurrency. I'll be TA'ing for it this winter 2026 quarter. that will teach about concurrency.
+In spring 2026, my machine learning capstone team ran experiments on ViT structured pruning, and wrote a [report](/assets/anforowicz_ml_capstone.pdf) about it.
 
-I also enjoy making websites for student organizations at the University of Washington. I maintain the websites of [Husky Satellite Lab](https://huskysat.org/team) ([code](https://github.com/UWCubeSat/hsl-website)) and [Competitive Programming Club](https://uw-programming.netlify.app/) ([code](https://github.com/manforowicz/uwcp-site)).
+<a href="/assets/anforowicz_ml_capstone.pdf"><img src="/assets/anforowicz_ml_capstone_thumbnail.png" alt="My machine learning capstone document"></a>
+
+I enjoy making websites for student organizations at the University of Washington. I maintain the websites of [Husky Satellite Lab](https://huskysat.org/team) ([code](https://github.com/UWCubeSat/hsl-website)) and [Competitive Programming Club](https://uw-programming.netlify.app/) ([code](https://github.com/manforowicz/uwcp-site)).
 
 I also teach others how to build and fly remote-controlled airplanes at the drone team of Husky Flying Club. Here's a video of me flying a DIY airplane our team built:
 
@@ -85,17 +108,19 @@ And here's a video of me trying to race an FPV (first-person-view) drone.
 
 Some relevant courses I've taken at the University of Washington include:
 
+- **Reinforcement Learning** - Supervised and self-superised learning is often used to train models to mimic humans. But what if there isn't enough human data, or we want an AI to be unhindered by human performance? Reinforcement learning is a broad field of research creating solutions to this problem. Things I learned include Soft Q Learning, and model-based approaches.
+
+- **Deep Learning** - Recent AI progress was driven by figuring out how to throw more compute at a problem. Modern deep neural networks with innovations like skip connections and attention are great at finding patterns in large unlabelled datasets. In this class I implemented a transformer, studied encoder-decoder architectures, and learned about using latent space vectors in creative ways.
+
+- **Wireless Communication** - Devices like our phones use a complex stack of compression, encoding, modulation, and transmission to send information over a large distance. In this course I programmed a software defined radio using digital signal processing principles. I used it to decode the azimuth information transmitted over VOR.
+
 - **Distributed Systems** - This course involved implementing Paxos, a fault-tolerant consensus protocol. Paxos is the backbone of services like Google and AWS, allowing them to reliably operate, even if multiple servers fail.
 
 - **Fundementals of Electrical Engineering** - In this course, I learned how to analytically design and test electrical circuits. 
 
-- **Foundations of Computing** - Here I learned the theoretical math underlying various aspects of computer science.
-
 - **Software Design And Implementation** - Here I created multiple fullstack typescript projects, using the best practices in version control, testing, and modularity.
 
 - **Data Structures and Parallelism** - This course covered parallelism and data structures through the lens of time complexity.
-
-- **Systems Programming** - In this course I gained experience writing low-level C++ projects. I learned the ins-and-outs of system calls and memory management.
 
 - **The Hardware/Software Interface** - Here I learned to use gdb, read assembly, and understand memory layout.
 
